@@ -6,32 +6,6 @@ app = Flask(__name__)
 
 @app.route('/')
 def home():
-    return render_template('deployments.html')
-
-@app.route('/quotesworking')
-def quotesworking():
-    try:
-        page_to_scrape = requests.get("http://quotes.toscrape.com")
-        page_to_scrape.raise_for_status()  # Raise an HTTPError if the request was unsuccessful
-        soup = BeautifulSoup(page_to_scrape.content, 'html.parser')
-
-        # Find all quotes
-        quotes = soup.findAll("span", attrs={"class": "text"})
-
-        # Find all authors
-        authors = soup.findAll("small", attrs={"class": "author"})
-
-        # Combine quotes and authors into a list of tuples
-        quote_data = [(quote.text, author.text) for quote, author in zip(quotes, authors)]
-
-        return render_template('quotes.html', quotes=quote_data)
-
-    except requests.exceptions.RequestException as e:
-        return "Error making request: {}".format(e)
-
-
-@app.route('/mydeployments')
-def mydeployments():
     count_of_working_sites = 0
     count_of_potentially_broken_sites = 0 
     try: 
@@ -62,4 +36,26 @@ def mydeployments():
         count_of_potentially_broken_sites += 1
         return{"5count_of_working_sites": count_of_working_sites, "count_of_potentially_broken_sites": count_of_potentially_broken_sites}
     
+
+
+@app.route('/quotesworking')
+def quotesworking():
+    try:
+        page_to_scrape = requests.get("http://quotes.toscrape.com")
+        page_to_scrape.raise_for_status()  # Raise an HTTPError if the request was unsuccessful
+        soup = BeautifulSoup(page_to_scrape.content, 'html.parser')
+
+        # Find all quotes
+        quotes = soup.findAll("span", attrs={"class": "text"})
+
+        # Find all authors
+        authors = soup.findAll("small", attrs={"class": "author"})
+
+        # Combine quotes and authors into a list of tuples
+        quote_data = [(quote.text, author.text) for quote, author in zip(quotes, authors)]
+
+        return render_template('quotes.html', quotes=quote_data)
+
+    except requests.exceptions.RequestException as e:
+        return "Error making request: {}".format(e)
 
