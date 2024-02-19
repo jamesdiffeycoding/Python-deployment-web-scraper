@@ -6,7 +6,7 @@ app = Flask(__name__)
 
 @app.route('/')
 def home():
-    return "Hello, World!"
+    return render_template('deployments.html')
 
 @app.route('/quotesworking')
 def quotesworking():
@@ -61,3 +61,5 @@ def mydeployments():
         # print(e)
         count_of_potentially_broken_sites += 1
         return{"5count_of_working_sites": count_of_working_sites, "count_of_potentially_broken_sites": count_of_potentially_broken_sites}
+    
+
