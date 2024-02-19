@@ -8,8 +8,8 @@ app = Flask(__name__)
 def home():
     return "Hello, World!"
 
-@app.route('/portfolio')
-def portfolio():
+@app.route('/quotesworking')
+def quotesworking():
     try:
         page_to_scrape = requests.get("http://quotes.toscrape.com")
         page_to_scrape.raise_for_status()  # Raise an HTTPError if the request was unsuccessful
