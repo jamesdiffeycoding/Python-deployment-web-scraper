@@ -28,4 +28,3 @@ def portfolio():
 
     except requests.exceptions.RequestException as e:
         return "Error making request: {}".format(e)
-    return render_template('index.html')
