@@ -46,6 +46,8 @@ a { color: white}
 </head>
 <body>
     <h1>James's deployment status</h1>
+    <div>Count of working sites: {{ count_of_working_sites}}</div>
+    <div>{{ count_of_potentially_broken_sites }} </div>
     <div class="grid-container">
         <!-- HEADINGS -->
         <div class="grid-header">Deployment</div>
@@ -57,7 +59,7 @@ a { color: white}
         <div class="grid-item"><a href="https://jamesdiffeycoding.github.io/JS-Banana-and-Ivy-Game/">Banana and Ivy Game</a></div>
         <div class="grid-item">HTML CSS JS</div>
         <div class="grid-item">GH Pages</div>
-        <div class="grid-item">?</div>
+        <div class="grid-item">{{ count_of_working_sites }}</div>
 
         <!-- DEPLOYMENT -->
         <div class="grid-item"><a href="https://secure-nextjs-homeless-shelter-database.vercel.app/">Secure Shelter Database</a></div>

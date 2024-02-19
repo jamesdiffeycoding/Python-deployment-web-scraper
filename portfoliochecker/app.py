@@ -55,7 +55,7 @@ def mydeployments():
         else: 
             print('The request went through suggesting the URL was valid, but the touch points you set may have changed')
             count_of_potentially_broken_sites += 1
-        return{"4count_of_working_sites": count_of_working_sites, "count_of_potentially_broken_sites": count_of_potentially_broken_sites}
+        return render_template('deployments.html', count_of_working_sites=count_of_working_sites, count_of_potentially_broken_sites=count_of_potentially_broken_sites)
     except requests.exceptions.RequestException as e:
         print("Error making request to shelterdatabase. Maybe there was a typo?") 
         # print(e)
