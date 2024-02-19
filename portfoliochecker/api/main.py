@@ -9,4 +9,4 @@ def home():
 
 @app.route('/portfolio')
 def portfolio():
-    return render_template('index.html')
+    return render_template('../templates/index.html')
