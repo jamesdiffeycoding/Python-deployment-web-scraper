@@ -215,7 +215,7 @@ a { color: white}
         </div>
 
         <!-- DEPLOYMENT -->
-        <div class="grid-item"><a href="https://jamesdiffeycoding.github.io/Animated-Wallpaper-StudioGhibli/">Animated Studio Ghibli Wallpaper</a></div>
+        <div class="grid-item"><a href="https://jamesdiffeycoding.github.io/Animated-Wallpaper-StudioGhibli/">Studio Ghibli Animation</a></div>
         <div class="grid-item">HTML, CSS</div>
         <div class="grid-item">GH Pages</div>
         <div class="grid-item-status">
@@ -233,6 +233,24 @@ a { color: white}
             {% endif %}
         </div>
 
+    <!-- DEPLOYMENT -->
+        <div class="grid-item"><a href="https://jamesdiffeycoding.github.io/Animated-Wallpaper-StudioGhibli/">Python Deployment Dashboard</a></div>
+        <div class="grid-item">Python, Flask</div>
+        <div class="grid-item">Vercel</div>
+        <div class="grid-item-status">
+            <!-- left status part -->
+            {% if depdashboard_url %}
+            <div class="green left-border-radius">{{ url_success_message }}</div>
+            {% else %}
+            <div class="orange left-border-radius">{{ url_failure_message }}</div>
+            {% endif %}
+            <!-- right status part -->
+            {% if depdashboard_tp %}
+            <div class="green right-border-radius">{{ tp_success_message }}</div>
+            {% else %}
+            <div class="orange right-border-radius">{{ tp_failure_message }}</div>
+            {% endif %}
+        </div>
 
     </div>
 

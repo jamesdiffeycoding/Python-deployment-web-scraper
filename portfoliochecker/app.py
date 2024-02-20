@@ -26,6 +26,7 @@ def home():
     rubydex_url = False
     awesunsolar_url = False
     djangofirstproject_url = False
+    depdashboard_url = False
 
     # STATUS VARIABLES FOR WHETHER SPECIFIED TOUCHPOINTS WERE REACHED (e.g. a h1 tag with a specific class name)
     banana_tp = False
@@ -36,6 +37,7 @@ def home():
     rubydex_tp = False
     awesunsolar_tp = False
     djangofirstproject_tp = False
+    depdashboard_tp = False
 
     # SITE - "shelter" APP CHECK
     try: 
@@ -255,6 +257,34 @@ def home():
     except Exception as e: # this checks for other erros fetching the site
         count_of_potentially_broken_sites += 1
         djangofirstproject_url = False
+
+    
+    # SITE - "djangofirstproject" APP CHECK
+    try: 
+        page_to_scrape = requests.get("https://django-learning-project.vercel.app/")
+        soup = BeautifulSoup(page_to_scrape.content, 'html.parser')
+        first_touch_points = soup.findAll("h1", attrs={"class": ""})
+        second_touch_points = soup.findAll("div")
+        page_to_scrape.raise_for_status()  # Raise an exception for HTTP errors
+
+        # Check if both lists are non-empty before proceeding
+        if first_touch_points and second_touch_points:
+            depdashboard_tp = True
+            count_of_working_sites += 1
+        else:
+            # print('The request went through suggesting the URL was valid, but the touch points you set may have changed')
+            depdashboard_tp = False
+            count_of_potentially_broken_sites += 1
+        depdashboard_url = True
+    except requests.exceptions.RequestException as e:
+        # print("Error making request to shelter. Maybe there was a typo?") 
+        # print(e)
+        count_of_potentially_broken_sites += 1
+        depdashboard_url = False
+
+    except Exception as e: # this checks for other erros fetching the site
+        count_of_potentially_broken_sites += 1
+        depdashboard_url = False
 
     # RETURN STATEMENT 
     return render_template('deployments.html', 
