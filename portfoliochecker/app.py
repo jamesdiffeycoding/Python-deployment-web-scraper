@@ -39,7 +39,7 @@ def home():
 
     # SITE 1 - "shelter" APP CHECK
     try: 
-        page_to_scrape = requests.get("https://secure-nextjs-homeless-shelter-datasbase.vercel.app/")
+        page_to_scrape = requests.get("https://secure-nextjs-homeless-shelter-database.vercel.app/")
         soup = BeautifulSoup(page_to_scrape.content, 'html.parser')
         first_touch_points = soup.findAll("h1", attrs={"class": "white-font"})
         page_to_scrape.raise_for_status()  # Raise an exception for HTTP errors
@@ -64,7 +64,7 @@ def home():
 
     # SITE - "banana" APP CHECK
     try: 
-        page_to_scrape = requests.get("https://jamesdiffeycoding.github.io/JS-Banana-and-Ivy-Game/")
+        page_to_scrape = requests.get("https://jamesdiffeycoding.github.io/JS-Badnana-and-Ivy-Game/")
         soup = BeautifulSoup(page_to_scrape.content, 'html.parser')
         first_touch_points = soup.findAll("div", attrs={"class": "header"})
         second_touch_points = soup.findAll("p")
@@ -89,7 +89,7 @@ def home():
         count_of_potentially_broken_sites += 1
         banana_url = False
 
-        
+
     # RETURN STATEMENT 
     return render_template('deployments.html', 
     count_of_working_sites=count_of_working_sites, count_of_potentially_broken_sites=count_of_potentially_broken_sites,
