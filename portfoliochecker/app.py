@@ -13,7 +13,7 @@ def home():
 
     # MESSAGES TO DISPLAY
     url_success_message = 'Url reached.'
-    url_failure_message = 'Url failed. Check for typos.'
+    url_failure_message = 'Url request failed.'
     tp_success_message = 'Touch points reached.'
     tp_failure_message = 'Touch points failed.'
 
