@@ -42,6 +42,7 @@ def home():
         page_to_scrape = requests.get("https://secure-nextjs-homeless-shelter-datasbase.vercel.app/")
         soup = BeautifulSoup(page_to_scrape.content, 'html.parser')
         first_touch_points = soup.findAll("h1", attrs={"class": "white-font"})
+        page_to_scrape.raise_for_status()  # Raise an exception for HTTP errors
         second_touch_points = soup.findAll("strong")
         # Check if both lists are non-empty before proceeding
         if first_touch_points and second_touch_points:
@@ -67,6 +68,8 @@ def home():
         soup = BeautifulSoup(page_to_scrape.content, 'html.parser')
         first_touch_points = soup.findAll("div", attrs={"class": "header"})
         second_touch_points = soup.findAll("p")
+        page_to_scrape.raise_for_status()  # Raise an exception for HTTP errors
+
         # Check if both lists are non-empty before proceeding
         if first_touch_points and second_touch_points:
             banana_tp = True
@@ -82,7 +85,11 @@ def home():
         count_of_potentially_broken_sites += 1
         banana_url = False
 
+    except Exception as e: # this checks for other erros fetching the site
+        count_of_potentially_broken_sites += 1
+        banana_url = False
 
+        
     # RETURN STATEMENT 
     return render_template('deployments.html', 
     count_of_working_sites=count_of_working_sites, count_of_potentially_broken_sites=count_of_potentially_broken_sites,
