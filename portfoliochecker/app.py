@@ -39,7 +39,7 @@ def home():
 
     # SITE - "shelter" APP CHECK
     try: 
-        page_to_scrape = requests.get("https://secure-nextjs-homeless-sheltaer-database.vercel.app/")
+        page_to_scrape = requests.get("https://secure-nextjs-homeless-shelter-database.vercel.app/")
         soup = BeautifulSoup(page_to_scrape.content, 'html.parser')
         first_touch_points = soup.findAll("h1", attrs={"class": "white-font"})
         page_to_scrape.raise_for_status()  # Raise an exception for HTTP errors
@@ -64,7 +64,7 @@ def home():
 
     # SITE - "banana" APP CHECK
     try: 
-        page_to_scrape = requests.get("https://jamesdiffeycoding.github.io/aJS-Banana-and-Ivy-Game/")
+        page_to_scrape = requests.get("https://jamesdiffeycoding.github.io/JS-Banana-and-Ivy-Game/")
         soup = BeautifulSoup(page_to_scrape.content, 'html.parser')
         first_touch_points = soup.findAll("div", attrs={"class": "header"})
         second_touch_points = soup.findAll("p")
@@ -91,9 +91,9 @@ def home():
 
     # SITE - "tailwind" APP CHECK
     try: 
-        page_to_scrape = requests.get("https://jamesdiffeycoding.github.io/Tailwind-aResponsive-Grid-Experiments/")
+        page_to_scrape = requests.get("https://jamesdiffeycoding.github.io/Tailwind-Responsive-Grid-Experiments/")
         soup = BeautifulSoup(page_to_scrape.content, 'html.parser')
-        first_touch_points = soup.findAll("h1", attrs={"class": "header"})
+        first_touch_points = soup.findAll("div", attrs={"id": "root"})
         second_touch_points = soup.findAll("p")
         page_to_scrape.raise_for_status()  # Raise an exception for HTTP errors
 
@@ -119,7 +119,7 @@ def home():
 
     # SITE - "devlessons" APP CHECK
     try: 
-        page_to_scrape = requests.get("https://developer-lessons-react.vaercel.app/")
+        page_to_scrape = requests.get("https://developer-lessons-react.vercel.app/")
         soup = BeautifulSoup(page_to_scrape.content, 'html.parser')
         first_touch_points = soup.findAll("div", attrs={"class": "header"})
         second_touch_points = soup.findAll("p")
@@ -147,7 +147,7 @@ def home():
 
     # SITE - "ghibli" APP CHECK
     try: 
-        page_to_scrape = requests.get("https://jamesdiffeycoding.github.io/Animataed-Wallpaper-StudioGhibli/")
+        page_to_scrape = requests.get("https://jamesdiffeycoding.github.io/Animated-Wallpaper-StudioGhibli/")
         soup = BeautifulSoup(page_to_scrape.content, 'html.parser')
         first_touch_points = soup.findAll("div", attrs={"class": "header"})
         second_touch_points = soup.findAll("p")
@@ -175,9 +175,9 @@ def home():
 
     # SITE - "rubydex" APP CHECK
     try: 
-        page_to_scrape = requests.get("https://rubyonrails-pokedex.onrender.com/poakemonsters")
+        page_to_scrape = requests.get("https://rubyonrails-pokedex.onrender.com/pokemonsters")
         soup = BeautifulSoup(page_to_scrape.content, 'html.parser')
-        first_touch_points = soup.findAll("div", attrs={"class": "header"})
+        first_touch_points = soup.findAll("div", attrs={"class": "footer"})
         second_touch_points = soup.findAll("p")
         page_to_scrape.raise_for_status()  # Raise an exception for HTTP errors
 
@@ -203,9 +203,9 @@ def home():
 
     # SITE - "awesunsolar" APP CHECK
     try: 
-        page_to_scrape = requests.get("https://awesun-solar-visualiser.vercel.aapp/")
+        page_to_scrape = requests.get("https://awesun-solar-visualiser.vercel.app/")
         soup = BeautifulSoup(page_to_scrape.content, 'html.parser')
-        first_touch_points = soup.findAll("div", attrs={"class": "header"})
+        first_touch_points = soup.findAll("div", attrs={"class": "backgroundImage"})
         second_touch_points = soup.findAll("p")
         page_to_scrape.raise_for_status()  # Raise an exception for HTTP errors
 
@@ -231,9 +231,9 @@ def home():
 
     # SITE - "djangofirstproject" APP CHECK
     try: 
-        page_to_scrape = requests.get("https://django-learning-project.verceal.app/")
+        page_to_scrape = requests.get("https://django-learning-project.vercel.app/")
         soup = BeautifulSoup(page_to_scrape.content, 'html.parser')
-        first_touch_points = soup.findAll("div", attrs={"class": "header"})
+        first_touch_points = soup.findAll("nav", attrs={"class": "navbar"})
         second_touch_points = soup.findAll("p")
         page_to_scrape.raise_for_status()  # Raise an exception for HTTP errors
 
