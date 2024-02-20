@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Quotes</title>
+    <title>James's Portfolio Dashboard</title>
     <link rel="stylesheet" href="style.css">
     <style>
         body {
@@ -17,7 +17,7 @@ a { color: white}
 .grid-container {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1.6fr;
-    gap: 20px; /* Gap between grid items */
+    gap: 10px; /* Gap between grid items */
     padding: 0px;
 }
 
@@ -124,21 +124,57 @@ a { color: white}
         <div class="grid-item"><a href="https://jamesdiffeycoding.github.io/Tailwind-Responsive-Grid-Experiments/">Tailwind Responsive Grids</a></div>
         <div class="grid-item">Tailwind, HTML</div>
         <div class="grid-item">GH Pages</div>
-        <div class="grid-item">{{ tailwind_url }}{{ tailwind_tp }}</div>
-
+        <div class="grid-item-status">
+            <!-- left status part -->
+            {% if tailwind_url %}
+            <div class="green left-border-radius">{{ url_success_message }}</div>
+            {% else %}
+            <div class="orange left-border-radius">{{ url_failure_message }}</div>
+            {% endif %}
+            <!-- right status part -->
+            {% if tailwind_tp %}
+            <div class="green right-border-radius">{{ tp_success_message }}</div>
+            {% else %}
+            <div class="orange right-border-radius">{{ tp_failure_message }}</div>
+            {% endif %}
+        </div>
         <!-- DEPLOYMENT -->
         <div class="grid-item"><a href="https://developer-lessons-react.vercel.app/">Developer Lessons Log</a></div>
         <div class="grid-item">React, Local Storage</div>
         <div class="grid-item">Vercel</div>
-        <div class="grid-item">{{ devlessons_url }}{{ devlessons_tp }}</div>
-
+        <div class="grid-item-status">
+            <!-- left status part -->
+            {% if devlessons_url %}
+            <div class="green left-border-radius">{{ url_success_message }}</div>
+            {% else %}
+            <div class="orange left-border-radius">{{ url_failure_message }}</div>
+            {% endif %}
+            <!-- right status part -->
+            {% if devlessons_tp %}
+            <div class="green right-border-radius">{{ tp_success_message }}</div>
+            {% else %}
+            <div class="orange right-border-radius">{{ tp_failure_message }}</div>
+            {% endif %}
+        </div>
 
         <!-- DEPLOYMENT -->
         <div class="grid-item"><a href="https://jamesdiffeycoding.github.io/Animated-Wallpaper-StudioGhibli/">Animated Studio Ghibli Wallpaper</a></div>
         <div class="grid-item">HTML, CSS</div>
         <div class="grid-item">GH Pages</div>
-        <div class="grid-item">{{ ghibli_url }}{{ ghibli_tp }}</div>
-
+        <div class="grid-item-status">
+            <!-- left status part -->
+            {% if ghibli_url %}
+            <div class="green left-border-radius">{{ url_success_message }}</div>
+            {% else %}
+            <div class="orange left-border-radius">{{ url_failure_message }}</div>
+            {% endif %}
+            <!-- right status part -->
+            {% if ghibli_tp %}
+            <div class="green right-border-radius">{{ tp_success_message }}</div>
+            {% else %}
+            <div class="orange right-border-radius">{{ tp_failure_message }}</div>
+            {% endif %}
+        </div>
         <!-- DEPLOYMENT -->
         <div class="grid-item"><a href="https://rubyonrails-pokedex.onrender.com/pokemonsters">Ruby on Rails Pokedex</a></div>
         <div class="grid-item">Ruby On Rails, HTML, CSS</div>
@@ -151,14 +187,38 @@ a { color: white}
         <div class="grid-item"><a href="https://awesun-solar-visualiser.vercel.app/">Awesun Solar Visualiser</a></div>
         <div class="grid-item">Public APIs, Next JS, React</div>
         <div class="grid-item">Vercel</div>
-        <div class="grid-item">{{ awesunsolar_url }}{{ awesunsolar_tp }}</div>
-
+        <div class="grid-item-status">
+            <!-- left status part -->
+            {% if awesunsolar_url %}
+            <div class="green left-border-radius">{{ url_success_message }}</div>
+            {% else %}
+            <div class="orange left-border-radius">{{ url_failure_message }}</div>
+            {% endif %}
+            <!-- right status part -->
+            {% if awesunsolar_tp %}
+            <div class="green right-border-radius">{{ tp_success_message }}</div>
+            {% else %}
+            <div class="orange right-border-radius">{{ tp_failure_message }}</div>
+            {% endif %}
+        </div>
         <!-- DEPLOYMENT -->
         <div class="grid-item"><a href="https://django-learning-project.vercel.app/">Python / Django Learning App</a></div>
         <div class="grid-item">Python, Django</div>
         <div class="grid-item">Vercel</div>
-        <div class="grid-item">{{ djangofirstproject_url }}{{ djangofirstproject_tp }}</div>
-
+        <div class="grid-item-status">
+            <!-- left status part -->
+            {% if djangofirstproject_url %}
+            <div class="green left-border-radius">{{ url_success_message }}</div>
+            {% else %}
+            <div class="orange left-border-radius">{{ url_failure_message }}</div>
+            {% endif %}
+            <!-- right status part -->
+            {% if djangofirstproject_tp %}
+            <div class="green right-border-radius">{{ tp_success_message }}</div>
+            {% else %}
+            <div class="orange right-border-radius">{{ tp_failure_message }}</div>
+            {% endif %}
+        </div>
 
 
     </div>
