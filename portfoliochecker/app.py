@@ -48,25 +48,28 @@ def home():
         shelter_second_touch_points = soup.findAll("strong")
         # Check if both lists are non-empty before proceeding
         if shelter_first_touch_points and shelter_second_touch_points:
-            shelter_tp = tp_success_message
+            shelter_tp = True
             count_of_working_sites += 1
         else:
             # print('The request went through suggesting the URL was valid, but the touch points you set may have changed')
-            shelter_tp = tp_failure_message
+            shelter_tp = False
             count_of_potentially_broken_sites += 1
-        shelter_url = url_success_message
+        shelter_url = True
     except requests.exceptions.RequestException as e:
         # print("Error making request to shelter. Maybe there was a typo?") 
         # print(e)
         count_of_potentially_broken_sites += 1
-        shelter_url = url_failure_message
+        shelter_url = False
 
 
     # RETURN STATEMENT 
     return render_template('deployments.html', 
     count_of_working_sites=count_of_working_sites, count_of_potentially_broken_sites=count_of_potentially_broken_sites,
     # EXAMPLE VARIABLES
-    url_success_message = url_success_message, url_failure_message = url_failure_message, tp_success_message = tp_success_message, tp_failure_message = tp_failure_message,
+    url_success_message = url_success_message,
+    url_failure_message = url_failure_message, 
+    tp_success_message = tp_success_message, 
+    tp_failure_message = tp_failure_message,
     # PROJECT STATUS BOOLEAN VARIABLES
     banana_url = banana_url,
     shelter_url = shelter_url,
