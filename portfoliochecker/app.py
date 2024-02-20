@@ -93,7 +93,7 @@ def home():
     try: 
         page_to_scrape = requests.get("https://jamesdiffeycoding.github.io/Tailwind-Responsive-Grid-Experiments/")
         soup = BeautifulSoup(page_to_scrape.content, 'html.parser')
-        first_touch_points = soup.findAll("div", attrs={"id": "root"})
+        first_touch_points = soup.findAll("h1", attrs={"class": "text-4xl"})
         second_touch_points = soup.findAll("p")
         page_to_scrape.raise_for_status()  # Raise an exception for HTTP errors
 
@@ -121,7 +121,7 @@ def home():
     try: 
         page_to_scrape = requests.get("https://developer-lessons-react.vercel.app/")
         soup = BeautifulSoup(page_to_scrape.content, 'html.parser')
-        first_touch_points = soup.findAll("div", attrs={"class": "header"})
+        first_touch_points = soup.findAll("section", attrs={"class": "contents-container"})
         second_touch_points = soup.findAll("p")
         page_to_scrape.raise_for_status()  # Raise an exception for HTTP errors
 
@@ -149,7 +149,7 @@ def home():
     try: 
         page_to_scrape = requests.get("https://jamesdiffeycoding.github.io/Animated-Wallpaper-StudioGhibli/")
         soup = BeautifulSoup(page_to_scrape.content, 'html.parser')
-        first_touch_points = soup.findAll("div", attrs={"class": "header"})
+        first_touch_points = soup.findAll("video", attrs={"class": "bg-video"})
         second_touch_points = soup.findAll("p")
         page_to_scrape.raise_for_status()  # Raise an exception for HTTP errors
 
