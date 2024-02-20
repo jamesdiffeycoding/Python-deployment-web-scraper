@@ -126,7 +126,7 @@ def home():
         page_to_scrape.raise_for_status()  # Raise an exception for HTTP errors
 
         # Check if both lists are non-empty before proceeding
-        if first_touch_points:
+        if second_touch_points:
             devlessons_tp = True
             count_of_working_sites += 1
         else:
