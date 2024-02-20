@@ -15,7 +15,7 @@ def home():
     url_success_message = 'Url reached.'
     url_failure_message = 'Url failed. Check for typos.'
     tp_success_message = 'Touch points reached.'
-    tp_failure_message = 'Touch points fauked. Check for changes.'
+    tp_failure_message = 'Touch points failed. Check for changes.'
 
     # STATUS FOR WHETHER A SITE WAS REACHED (i.e. a valid URL was provided)
     banana_url = False
@@ -37,17 +37,14 @@ def home():
     awesunsolar_tp = False
     djangofirstproject_tp = False
 
-    # OVERALL STATUS
-    banana_bl = 'False'
-
     # SITE 1 - "shelter" APP CHECK
     try: 
-        shelter_page_to_scrape = requests.get("https://secure-nextjs-homeless-shelter-database.vercel.app/")
-        soup = BeautifulSoup(shelter_page_to_scrape.content, 'html.parser')
-        shelter_first_touch_points = soup.findAll("h1", attrs={"class": "white-font"})
-        shelter_second_touch_points = soup.findAll("strong")
+        page_to_scrape = requests.get("https://secure-nextjs-homeless-shelter-database.vercel.app/")
+        soup = BeautifulSoup(page_to_scrape.content, 'html.parser')
+        first_touch_points = soup.findAll("h1", attrs={"class": "white-font"})
+        second_touch_points = soup.findAll("strong")
         # Check if both lists are non-empty before proceeding
-        if shelter_first_touch_points and shelter_second_touch_points:
+        if first_touch_points and second_touch_points:
             shelter_tp = True
             count_of_working_sites += 1
         else:
@@ -60,6 +57,27 @@ def home():
         # print(e)
         count_of_potentially_broken_sites += 1
         shelter_url = False
+
+    # SITE - "banana" APP CHECK
+    try: 
+        page_to_scrape = requests.get("https://jamesdiffeycoding.github.io/JS-Banana-and-Ivy-Game/")
+        soup = BeautifulSoup(page_to_scrape.content, 'html.parser')
+        first_touch_points = soup.findAll("h1", attrs={"class": "white-font"})
+        second_touch_points = soup.findAll("strong")
+        # Check if both lists are non-empty before proceeding
+        if first_touch_points and second_touch_points:
+            banana_tp = True
+            count_of_working_sites += 1
+        else:
+            # print('The request went through suggesting the URL was valid, but the touch points you set may have changed')
+            banana_tp = False
+            count_of_potentially_broken_sites += 1
+        banana_url = True
+    except requests.exceptions.RequestException as e:
+        # print("Error making request to shelter. Maybe there was a typo?") 
+        # print(e)
+        count_of_potentially_broken_sites += 1
+        banana_url = False
 
 
     # RETURN STATEMENT 
