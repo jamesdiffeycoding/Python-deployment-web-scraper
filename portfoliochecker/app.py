@@ -52,9 +52,12 @@ def home():
             shelter_tp = False
             count_of_potentially_broken_sites += 1
         shelter_url = True
-    except requests.exceptions.RequestException as e:
+    except requests.exceptions.RequestException as e: # this checks for request errors
         # print("Error making request to shelter. Maybe there was a typo?") 
         # print(e)
+        count_of_potentially_broken_sites += 1
+        shelter_url = False
+    except Exception as e: # this checks for other erros fetching the site
         count_of_potentially_broken_sites += 1
         shelter_url = False
 
