@@ -35,6 +35,15 @@ a { color: white}
     border-radius: 5px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); /* Box shadow for grid items */
 }
+.grid-item:hover {
+    background-color: #42424200; /* Darker background color for grid items */
+}
+.grid-item-example {
+    background-color: #000000; /* Darker background color for grid items */
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); /* Box shadow for grid items */
+}
 .grid-item-status {
     background-color: #333; /* Darker background color for grid items */
     border-radius: 5px;
@@ -81,7 +90,25 @@ a { color: white}
         <div class="grid-header">Technologies</div>
         <div class="grid-header">Host</div>
         <div class="grid-header">Status</div>
-
+        <!-- DEPLOYMENT -->
+            <div class="grid-item-example"><a href="https://madeupurlthatdoesntexist.com/">Made up url that doesnt exist</a></div>
+            <div class="grid-item-example">Python, Flask</div>
+            <div class="grid-item-example">Vercel</div>
+            <div class="grid-item-status">
+                <!-- left status part -->
+                {% if madeupurl_url %}
+                <div class="green left-border-radius">{{ url_success_message }}</div>
+                {% else %}
+                <div class="orange left-border-radius">{{ url_failure_message }}</div>
+                {% endif %}
+                <!-- right status part -->
+                {% if madeupurl_tp %}
+                <div class="green right-border-radius">{{ tp_success_message }}</div>
+                {% else %}
+                <div class="orange right-border-radius">{{ tp_failure_message }}</div>
+                {% endif %}
+            </div>
+        
         <!-- DEPLOYMENT -->
         <div class="grid-item"><a href="https://awesun-solar-visualiser.vercel.app/">Awesun Solar Visualiser</a></div>
         <div class="grid-item">Public APIs, Next JS, React</div>
@@ -233,24 +260,6 @@ a { color: white}
             {% endif %}
         </div>
 
-    <!-- DEPLOYMENT -->
-        <div class="grid-item"><a href="https://python-portfolio-checker.vercel.app/">Python Deployment Dashboard</a></div>
-        <div class="grid-item">Python, Flask</div>
-        <div class="grid-item">Vercel</div>
-        <div class="grid-item-status">
-            <!-- left status part -->
-            {% if madeupurl_url %}
-            <div class="green left-border-radius">{{ url_success_message }}</div>
-            {% else %}
-            <div class="orange left-border-radius">{{ url_failure_message }}</div>
-            {% endif %}
-            <!-- right status part -->
-            {% if madeupurl_tp %}
-            <div class="green right-border-radius">{{ tp_success_message }}</div>
-            {% else %}
-            <div class="orange right-border-radius">{{ tp_failure_message }}</div>
-            {% endif %}
-        </div>
 
     </div>
 
