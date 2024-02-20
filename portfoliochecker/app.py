@@ -12,8 +12,8 @@ def home():
     count_of_potentially_broken_sites = 0 
 
     # MESSAGES TO DISPLAY
-    url_success_message = 'URL successfully reached.'
-    url_failure_message = 'URL not reached. Check for deployment issues.'
+    url_success_message = 'The url was reached, '
+    url_failure_message = 'The specified url was not reached.'
     tp_success_message = 'Specified touch points successfully reached.'
     tp_failure_message = 'Specified touch points not reached. Check for updated html elements.'
 
@@ -47,11 +47,11 @@ def home():
         shelter_second_touch_points = soup.findAll("strong")
         # Check if both lists are non-empty before proceeding
         if shelter_first_touch_points and shelter_second_touch_points:
-            shelter_tp = url_success_message
+            shelter_tp = tp_success_message
             count_of_working_sites += 1
         else:
             # print('The request went through suggesting the URL was valid, but the touch points you set may have changed')
-            shelter_tp = url_failure_message
+            shelter_tp = tp_failure_message
             count_of_potentially_broken_sites += 1
         shelter_url = url_success_message
     except requests.exceptions.RequestException as e:
