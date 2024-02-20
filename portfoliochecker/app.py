@@ -11,25 +11,31 @@ def home():
     count_of_working_sites = 0
     count_of_potentially_broken_sites = 0 
 
-    # BOOLEAN STATUS FOR WHETHER A SITE WAS REACHED (i.e. a valid URL was provided)
-    banana_url_bl = 'False'
-    shelter_url_bl = 'False'
-    tailwind_url_bl = 'False'
-    devlessons_url_bl = 'False'
-    ghibli_url_bl = 'False'
-    rubydex_url_bl = 'False'
-    awesunsolar_url_bl = 'False'
-    djangofirstproject_url_bl = 'False'
+    # MESSAGES TO DISPLAY
+    url_success_message = 'URL successfully reached.'
+    url_failure_message = 'URL not reached. Check for deployment issues.'
+    tp_success_message = 'Specified touch points successfully reached.'
+    tp_failure_message = 'Specified touch points not reached. Check for updated html elements.'
 
-    # BOOLEAN STATUS VARIABLES FOR WHETHER SPECIFIED TOUCHPOINTS WERE REACHED (e.g. a h1 tag with a specific class name)
-    banana_tp_bl = 'False'
-    shelter_tp_bl = 'False'
-    tailwind_tp_bl = 'False'
-    devlessons_tp_bl = 'False'
-    ghibli_tp_bl = 'False'
-    rubydex_tp_bl = 'False'
-    awesunsolar_tp_bl = 'False'
-    djangofirstproject_tp_bl = 'False'
+    # STATUS FOR WHETHER A SITE WAS REACHED (i.e. a valid URL was provided)
+    banana_url = url_failure_message
+    shelter_url = url_failure_message
+    tailwind_url = url_failure_message
+    devlessons_url = url_failure_message
+    ghibli_url = url_failure_message
+    rubydex_url = url_failure_message
+    awesunsolar_url = url_failure_message
+    djangofirstproject_url = url_failure_message
+
+    # STATUS VARIABLES FOR WHETHER SPECIFIED TOUCHPOINTS WERE REACHED (e.g. a h1 tag with a specific class name)
+    banana_tp = url_success_message
+    shelter_tp = url_success_message
+    tailwind_tp = url_success_message
+    devlessons_tp = url_success_message
+    ghibli_tp = url_success_message
+    rubydex_tp = url_success_message
+    awesunsolar_tp = url_success_message
+    djangofirstproject_tp = url_success_message
 
 
 
@@ -41,37 +47,42 @@ def home():
         shelter_second_touch_points = soup.findAll("strong")
         # Check if both lists are non-empty before proceeding
         if shelter_first_touch_points and shelter_second_touch_points:
-            shelter_tp_bl = 'True'
+            shelter_tp = url_success_message
             count_of_working_sites += 1
         else:
             # print('The request went through suggesting the URL was valid, but the touch points you set may have changed')
-            shelter_tp_bl = 'False'
+            shelter_tp = url_failure_message
             count_of_potentially_broken_sites += 1
+        shelter_url = url_success_message
     except requests.exceptions.RequestException as e:
         # print("Error making request to shelter. Maybe there was a typo?") 
         # print(e)
         count_of_potentially_broken_sites += 1
+        shelter_url = url_failure_message
 
 
     # RETURN STATEMENT 
     return render_template('deployments.html', 
     count_of_working_sites=count_of_working_sites, count_of_potentially_broken_sites=count_of_potentially_broken_sites,
-    banana_url_bl = banana_url_bl,
-    shelter_url_bl = shelter_url_bl,
-    tailwind_url_bl = tailwind_url_bl,
-    devlessons_url_bl = devlessons_url_bl,
-    ghibli_url_bl = ghibli_url_bl,
-    rubydex_url_bl = rubydex_url_bl,
-    awesunsolar_url_bl = awesunsolar_url_bl,
-    djangofirstproject_url_bl = djangofirstproject_url_bl,
-    banana_tp_bl=banana_tp_bl,
-    shelter_tp_bl=shelter_tp_bl,
-    tailwind_tp_bl=tailwind_tp_bl,
-    devlessons_tp_bl=devlessons_tp_bl,
-    ghibli_tp_bl=ghibli_tp_bl,
-    rubydex_tp_bl=rubydex_tp_bl,
-    awesunsolar_tp_bl=awesunsolar_tp_bl,
-    djangofirstproject_tp_bl=djangofirstproject_tp_bl)
+    # EXAMPLE VARIABLES
+    url_success_message = url_success_message, url_failure_message = url_failure_message, tp_success_message = tp_success_message, tp_failure_message = tp_failure_message,
+    # PROJECT STATUS BOOLEAN VARIABLES
+    banana_url = banana_url,
+    shelter_url = shelter_url,
+    tailwind_url = tailwind_url,
+    devlessons_url = devlessons_url,
+    ghibli_url = ghibli_url,
+    rubydex_url = rubydex_url,
+    awesunsolar_url = awesunsolar_url,
+    djangofirstproject_url = djangofirstproject_url,
+    banana_tp=banana_tp,
+    shelter_tp=shelter_tp,
+    tailwind_tp=tailwind_tp,
+    devlessons_tp=devlessons_tp,
+    ghibli_tp=ghibli_tp,
+    rubydex_tp=rubydex_tp,
+    awesunsolar_tp=awesunsolar_tp,
+    djangofirstproject_tp=djangofirstproject_tp)
 
 
 
@@ -80,7 +91,7 @@ def home():
 # def quotesworking():
 #     try:
 #         page_to_scrape = requests.get("http://quotes.toscrape.com")
-#         page_to_scrape.raise_for_tp_bl()  # Raise an HTTPError if the request was unsuccessful
+#         page_to_scrape.raise_for_tp()  # Raise an HTTPError if the request was unsuccessful
 #         soup = BeautifulSoup(page_to_scrape.content, 'html.parser')
 
 #         # Find all quotes
