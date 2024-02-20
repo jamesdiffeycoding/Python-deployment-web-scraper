@@ -26,8 +26,8 @@ def home():
     rubydex_url = False
     awesunsolar_url = False
     djangofirstproject_url = False
-    madeupurl_url = False
-
+    madeupurl_url = False # deliberate fail example site
+    google_url = False # deliberate fail example site
     # STATUS VARIABLES FOR WHETHER SPECIFIED TOUCHPOINTS WERE REACHED (e.g. a h1 tag with a specific class name)
     banana_tp = False
     shelter_tp = False
@@ -37,7 +37,8 @@ def home():
     rubydex_tp = False
     awesunsolar_tp = False
     djangofirstproject_tp = False
-    madeupurl_tp = False
+    madeupurl_tp = False # deliberate fail example site
+    google_tp = False # deliberate fail example site
 
     # SITE - "shelter" APP CHECK
     try: 
@@ -297,22 +298,22 @@ def home():
 
         # Check if both lists are non-empty before proceeding
         if first_touch_points and second_touch_points:
-            madeupurl_tp = True
+            google_tp = True
             count_of_working_sites += 1
         else:
             # print('The request went through suggesting the URL was valid, but the touch points you set may have changed')
-            madeupurl_tp = False
+            google_tp = False
             count_of_potentially_broken_sites += 1
-        madeupurl_url = True
+        google_url = True
     except requests.exceptions.RequestException as e:
         # print("Error making request to shelter. Maybe there was a typo?") 
         # print(e)
         count_of_potentially_broken_sites += 1
-        madeupurl_url = False
+        google_url = False
 
     except Exception as e: # this checks for other erros fetching the site
         count_of_potentially_broken_sites += 1
-        madeupurl_url = False
+        google_url = False
 # END OF DELIBERATE FAIL SITES
 
     # RETURN STATEMENT 
@@ -323,6 +324,10 @@ def home():
     url_failure_message = url_failure_message, 
     tp_success_message = tp_success_message, 
     tp_failure_message = tp_failure_message,
+    madeupurl_tp=madeupurl_tp,
+    madeupurl_url=madeupurl_url,
+    google_tp=google_tp,
+    google_url=google_url,
     # PROJECT STATUS BOOLEAN VARIABLES
     banana_url = banana_url,
     shelter_url = shelter_url,
@@ -340,6 +345,7 @@ def home():
     rubydex_tp=rubydex_tp,
     awesunsolar_tp=awesunsolar_tp,
     djangofirstproject_tp=djangofirstproject_tp)
+    
 
 
 
