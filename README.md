@@ -6,7 +6,7 @@ As a developer with many projects online, I wanted a quick way to check that all
 I used Python to create this web scraping tool, that tests my own site URLs, checking that they are working and returning content as desired.
 
 ## What it does
-This site checks my deployments at their url, parses the html response, and checks that they return certain html 'touch points' I am checking for (e.g. <h1> tags, <p> tags, etc).
+This site checks my deployments at their url, parses the html response, and checks that they return certain html 'touch points' I am checking for (e.g. h1 tags, p tags, etc).
 
 The site displays the status of the url requests to these sites and the html responses and displays whether the request was successful or unsuccessful. If, for instance, the site is down, the url has moved, or it cannot find the specified tags, a clear visual indicator will let me know that the site may require my attention.
 
