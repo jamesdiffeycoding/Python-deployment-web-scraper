@@ -259,9 +259,9 @@ def home():
         djangofirstproject_url = False
 
     
-    # SITE - "djangofirstproject" APP CHECK
+    # SITE - "depdashboard" - deployments dashboard APP CHECK
     try: 
-        page_to_scrape = requests.get("https://django-learning-project.vercel.app/")
+        page_to_scrape = requests.get("https://python-portfolio-checker.vercel.app/")
         soup = BeautifulSoup(page_to_scrape.content, 'html.parser')
         first_touch_points = soup.findAll("h1", attrs={"class": ""})
         second_touch_points = soup.findAll("div")
