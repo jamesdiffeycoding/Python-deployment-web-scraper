@@ -39,7 +39,7 @@ def home():
 
     # SITE 1 - "shelter" APP CHECK
     try: 
-        page_to_scrape = requests.get("https://secure-nextjs-homeless-shelter-database.vercel.app/")
+        page_to_scrape = requests.get("https://secure-nextjs-homeless-shelter-datasbase.vercel.app/")
         soup = BeautifulSoup(page_to_scrape.content, 'html.parser')
         first_touch_points = soup.findAll("h1", attrs={"class": "white-font"})
         second_touch_points = soup.findAll("strong")
