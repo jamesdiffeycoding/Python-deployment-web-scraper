@@ -62,8 +62,8 @@ def home():
     try: 
         page_to_scrape = requests.get("https://jamesdiffeycoding.github.io/JS-Banana-and-Ivy-Game/")
         soup = BeautifulSoup(page_to_scrape.content, 'html.parser')
-        first_touch_points = soup.findAll("h1", attrs={"class": "white-font"})
-        second_touch_points = soup.findAll("strong")
+        first_touch_points = soup.findAll("div", attrs={"class": "header"})
+        second_touch_points = soup.findAll("p")
         # Check if both lists are non-empty before proceeding
         if first_touch_points and second_touch_points:
             banana_tp = True
