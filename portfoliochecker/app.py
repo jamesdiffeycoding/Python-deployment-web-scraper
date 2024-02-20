@@ -15,7 +15,7 @@ def home():
     url_success_message = 'Url reached.'
     url_failure_message = 'Url failed. Check for typos.'
     tp_success_message = 'Touch points reached.'
-    tp_failure_message = 'Touch points failed. Check for changes.'
+    tp_failure_message = 'Touch points failed.'
 
     # STATUS FOR WHETHER A SITE WAS REACHED (i.e. a valid URL was provided)
     banana_url = False
