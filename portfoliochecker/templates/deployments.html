@@ -179,8 +179,20 @@ a { color: white}
         <div class="grid-item"><a href="https://rubyonrails-pokedex.onrender.com/pokemonsters">Ruby on Rails Pokedex</a></div>
         <div class="grid-item">Ruby On Rails, HTML, CSS</div>
         <div class="grid-item">Render</div>
-        <div class="grid-item">{{ rubydex_url }}{{ rubydex_tp }}</div>
-
+        <div class="grid-item-status">
+            <!-- left status part -->
+            {% if rubydex_url %}
+            <div class="green left-border-radius">{{ url_success_message }}</div>
+            {% else %}
+            <div class="orange left-border-radius">{{ url_failure_message }}</div>
+            {% endif %}
+            <!-- right status part -->
+            {% if rubydex_tp %}
+            <div class="green right-border-radius">{{ tp_success_message }}</div>
+            {% else %}
+            <div class="orange right-border-radius">{{ tp_failure_message }}</div>
+            {% endif %}
+        </div>
 
 
         <!-- DEPLOYMENT -->
