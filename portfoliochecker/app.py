@@ -12,20 +12,20 @@ def home():
     count_of_potentially_broken_sites = 0 
 
     # MESSAGES TO DISPLAY
-    url_success_message = 'The url was reached, '
+    url_success_message = 'The url was reached.'
     url_failure_message = 'The specified url was not reached.'
     tp_success_message = 'Specified touch points successfully reached.'
     tp_failure_message = 'Specified touch points not reached. Check for updated html elements.'
 
     # STATUS FOR WHETHER A SITE WAS REACHED (i.e. a valid URL was provided)
-    banana_url = url_failure_message
-    shelter_url = url_failure_message
-    tailwind_url = url_failure_message
-    devlessons_url = url_failure_message
-    ghibli_url = url_failure_message
-    rubydex_url = url_failure_message
-    awesunsolar_url = url_failure_message
-    djangofirstproject_url = url_failure_message
+    banana_url = False
+    shelter_url = False
+    tailwind_url = False
+    devlessons_url = False
+    ghibli_url = False
+    rubydex_url = False
+    awesunsolar_url = False
+    djangofirstproject_url = False
 
     # STATUS VARIABLES FOR WHETHER SPECIFIED TOUCHPOINTS WERE REACHED (e.g. a h1 tag with a specific class name)
     banana_tp = url_success_message
@@ -37,7 +37,8 @@ def home():
     awesunsolar_tp = url_success_message
     djangofirstproject_tp = url_success_message
 
-
+    # OVERALL STATUS
+    banana_bl = 'False'
 
     # SITE 1 - "shelter" APP CHECK
     try: 
