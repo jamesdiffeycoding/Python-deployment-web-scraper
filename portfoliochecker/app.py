@@ -37,7 +37,7 @@ def home():
     awesunsolar_tp = False
     djangofirstproject_tp = False
 
-    # SITE 1 - "shelter" APP CHECK
+    # SITE - "shelter" APP CHECK
     try: 
         page_to_scrape = requests.get("https://secure-nextjs-homeless-shelter-database.vercel.app/")
         soup = BeautifulSoup(page_to_scrape.content, 'html.parser')
@@ -64,7 +64,7 @@ def home():
 
     # SITE - "banana" APP CHECK
     try: 
-        page_to_scrape = requests.get("https://jamesdiffeycoding.github.io/JS-Badnana-and-Ivy-Game/")
+        page_to_scrape = requests.get("https://jamesdiffeycoding.github.io/JS-Banana-and-Ivy-Game/")
         soup = BeautifulSoup(page_to_scrape.content, 'html.parser')
         first_touch_points = soup.findAll("div", attrs={"class": "header"})
         second_touch_points = soup.findAll("p")
@@ -89,6 +89,172 @@ def home():
         count_of_potentially_broken_sites += 1
         banana_url = False
 
+    # SITE - "tailwind" APP CHECK
+    try: 
+        page_to_scrape = requests.get("https://jamesdiffeycoding.github.io/Tailwind-Responsive-Grid-Experiments/")
+        soup = BeautifulSoup(page_to_scrape.content, 'html.parser')
+        first_touch_points = soup.findAll("h1", attrs={"class": "header"})
+        second_touch_points = soup.findAll("p")
+        page_to_scrape.raise_for_status()  # Raise an exception for HTTP errors
+
+        # Check if both lists are non-empty before proceeding
+        if first_touch_points and second_touch_points:
+            tailwind_tp = True
+            count_of_working_sites += 1
+        else:
+            # print('The request went through suggesting the URL was valid, but the touch points you set may have changed')
+            tailwind_tp = False
+            count_of_potentially_broken_sites += 1
+        tailwind_url = True
+    except requests.exceptions.RequestException as e:
+        # print("Error making request to shelter. Maybe there was a typo?") 
+        # print(e)
+        count_of_potentially_broken_sites += 1
+        tailwind_url = False
+
+    except Exception as e: # this checks for other erros fetching the site
+        count_of_potentially_broken_sites += 1
+        tailwind_url = False
+
+
+    # SITE - "devlessons" APP CHECK
+    try: 
+        page_to_scrape = requests.get("https://developer-lessons-react.vercel.app/")
+        soup = BeautifulSoup(page_to_scrape.content, 'html.parser')
+        first_touch_points = soup.findAll("div", attrs={"class": "header"})
+        second_touch_points = soup.findAll("p")
+        page_to_scrape.raise_for_status()  # Raise an exception for HTTP errors
+
+        # Check if both lists are non-empty before proceeding
+        if first_touch_points and second_touch_points:
+            devlessons_tp = True
+            count_of_working_sites += 1
+        else:
+            # print('The request went through suggesting the URL was valid, but the touch points you set may have changed')
+            devlessons_tp = False
+            count_of_potentially_broken_sites += 1
+        devlessons_url = True
+    except requests.exceptions.RequestException as e:
+        # print("Error making request to shelter. Maybe there was a typo?") 
+        # print(e)
+        count_of_potentially_broken_sites += 1
+        devlessons_url = False
+
+    except Exception as e: # this checks for other erros fetching the site
+        count_of_potentially_broken_sites += 1
+        devlessons_url = False
+
+
+    # SITE - "ghibli" APP CHECK
+    try: 
+        page_to_scrape = requests.get("https://jamesdiffeycoding.github.io/Animated-Wallpaper-StudioGhibli/")
+        soup = BeautifulSoup(page_to_scrape.content, 'html.parser')
+        first_touch_points = soup.findAll("div", attrs={"class": "header"})
+        second_touch_points = soup.findAll("p")
+        page_to_scrape.raise_for_status()  # Raise an exception for HTTP errors
+
+        # Check if both lists are non-empty before proceeding
+        if first_touch_points and second_touch_points:
+            ghibli_tp = True
+            count_of_working_sites += 1
+        else:
+            # print('The request went through suggesting the URL was valid, but the touch points you set may have changed')
+            ghibli_tp = False
+            count_of_potentially_broken_sites += 1
+        ghibli_url = True
+    except requests.exceptions.RequestException as e:
+        # print("Error making request to shelter. Maybe there was a typo?") 
+        # print(e)
+        count_of_potentially_broken_sites += 1
+        ghibli_url = False
+
+    except Exception as e: # this checks for other erros fetching the site
+        count_of_potentially_broken_sites += 1
+        ghibli_url = False
+
+
+    # SITE - "rubydex" APP CHECK
+    try: 
+        page_to_scrape = requests.get("https://rubyonrails-pokedex.onrender.com/pokemonsters")
+        soup = BeautifulSoup(page_to_scrape.content, 'html.parser')
+        first_touch_points = soup.findAll("div", attrs={"class": "header"})
+        second_touch_points = soup.findAll("p")
+        page_to_scrape.raise_for_status()  # Raise an exception for HTTP errors
+
+        # Check if both lists are non-empty before proceeding
+        if first_touch_points and second_touch_points:
+            rubydex_tp = True
+            count_of_working_sites += 1
+        else:
+            # print('The request went through suggesting the URL was valid, but the touch points you set may have changed')
+            rubydex_tp = False
+            count_of_potentially_broken_sites += 1
+        rubydex_url = True
+    except requests.exceptions.RequestException as e:
+        # print("Error making request to shelter. Maybe there was a typo?") 
+        # print(e)
+        count_of_potentially_broken_sites += 1
+        rubydex_url = False
+
+    except Exception as e: # this checks for other erros fetching the site
+        count_of_potentially_broken_sites += 1
+        rubydex_url = False
+
+
+    # SITE - "awesunsolar" APP CHECK
+    try: 
+        page_to_scrape = requests.get("https://awesun-solar-visualiser.vercel.app/")
+        soup = BeautifulSoup(page_to_scrape.content, 'html.parser')
+        first_touch_points = soup.findAll("div", attrs={"class": "header"})
+        second_touch_points = soup.findAll("p")
+        page_to_scrape.raise_for_status()  # Raise an exception for HTTP errors
+
+        # Check if both lists are non-empty before proceeding
+        if first_touch_points and second_touch_points:
+            awesunsolar_tp = True
+            count_of_working_sites += 1
+        else:
+            # print('The request went through suggesting the URL was valid, but the touch points you set may have changed')
+            awesunsolar_tp = False
+            count_of_potentially_broken_sites += 1
+        awesunsolar_url = True
+    except requests.exceptions.RequestException as e:
+        # print("Error making request to shelter. Maybe there was a typo?") 
+        # print(e)
+        count_of_potentially_broken_sites += 1
+        awesunsolar_url = False
+
+    except Exception as e: # this checks for other erros fetching the site
+        count_of_potentially_broken_sites += 1
+        awesunsolar_url = False
+
+
+    # SITE - "djangofirstproject" APP CHECK
+    try: 
+        page_to_scrape = requests.get("https://django-learning-project.vercel.app/")
+        soup = BeautifulSoup(page_to_scrape.content, 'html.parser')
+        first_touch_points = soup.findAll("div", attrs={"class": "header"})
+        second_touch_points = soup.findAll("p")
+        page_to_scrape.raise_for_status()  # Raise an exception for HTTP errors
+
+        # Check if both lists are non-empty before proceeding
+        if first_touch_points and second_touch_points:
+            djangofirstproject_tp = True
+            count_of_working_sites += 1
+        else:
+            # print('The request went through suggesting the URL was valid, but the touch points you set may have changed')
+            djangofirstproject_tp = False
+            count_of_potentially_broken_sites += 1
+        djangofirstproject_url = True
+    except requests.exceptions.RequestException as e:
+        # print("Error making request to shelter. Maybe there was a typo?") 
+        # print(e)
+        count_of_potentially_broken_sites += 1
+        djangofirstproject_url = False
+
+    except Exception as e: # this checks for other erros fetching the site
+        count_of_potentially_broken_sites += 1
+        djangofirstproject_url = False
 
     # RETURN STATEMENT 
     return render_template('deployments.html', 
