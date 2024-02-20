@@ -28,14 +28,14 @@ def home():
     djangofirstproject_url = False
 
     # STATUS VARIABLES FOR WHETHER SPECIFIED TOUCHPOINTS WERE REACHED (e.g. a h1 tag with a specific class name)
-    banana_tp = url_success_message
-    shelter_tp = url_success_message
-    tailwind_tp = url_success_message
-    devlessons_tp = url_success_message
-    ghibli_tp = url_success_message
-    rubydex_tp = url_success_message
-    awesunsolar_tp = url_success_message
-    djangofirstproject_tp = url_success_message
+    banana_tp = False
+    shelter_tp = False
+    tailwind_tp = False
+    devlessons_tp = False
+    ghibli_tp = False
+    rubydex_tp = False
+    awesunsolar_tp = False
+    djangofirstproject_tp = False
 
     # OVERALL STATUS
     banana_bl = 'False'
