@@ -121,12 +121,12 @@ def home():
     try: 
         page_to_scrape = requests.get("https://developer-lessons-react.vercel.app/")
         soup = BeautifulSoup(page_to_scrape.content, 'html.parser')
-        first_touch_points = soup.findAll("section", attrs={"class": "contents-container"})
+        first_touch_points = soup.findAll("section")
         second_touch_points = soup.findAll("div")
         page_to_scrape.raise_for_status()  # Raise an exception for HTTP errors
 
         # Check if both lists are non-empty before proceeding
-        if second_touch_points:
+        if first_touch_points and second_touch_points:
             devlessons_tp = True
             count_of_working_sites += 1
         else:
