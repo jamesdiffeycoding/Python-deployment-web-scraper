@@ -20,6 +20,16 @@ a { color: white}
     gap: 20px; /* Gap between grid items */
     padding: 0px;
 }
+.green {
+    background-color: #4CAF50; /* Green background color */
+
+}
+.orange {
+    background-color: #FFA500; /* Orange background color */
+}
+.red {
+    background-color: #ad2b22; /* Red background color */
+}
 
 .grid-header {
     background-color: #444; /* Darker background color for headers */
@@ -60,10 +70,9 @@ a { color: white}
         <div class="grid-item"><a href="https://jamesdiffeycoding.github.io/JS-Banana-and-Ivy-Game/">Banana and Ivy Game</a></div>
         <div class="grid-item">HTML, CSS, JS</div>
         <div class="grid-item">GH Pages</div>
-        <div class="grid-item">Vercel</div>
-        {% if shelter_url and shelter_tp %}
+        {% if banana_url and banana_tp %}
         <div class="grid-item green">URL and touchpoints reached</div>
-        {% elif shelter_url and not shelter_tp %}
+        {% elif banana_url and not banana_tp %}
         <div class="grid-item orange">URL but not touchpoints reached</div>
         {% else %}
         <div class="grid-item red">both url and touchpoints not reached</div>
