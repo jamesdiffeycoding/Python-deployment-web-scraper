@@ -41,17 +41,23 @@ a { color: white}
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); /* Box shadow for grid items */
     display: grid;
     grid-template-columns: 1fr 1fr;
-    column-gap: 1rem;;
+    column-gap: 0.4rem;
+}
+.left-border-radius {
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+}
+.right-border-radius {
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
 }
 .green {
     background-color: #4CAF50; /* Green background color */
-
+    padding: 20px;
 }
 .orange {
-    background-color: #FFA500; /* Orange background color */
-}
-.red {
-    background-color: #ad2b22; /* Red background color */
+    background-color: #a97412; /* Orange background color */
+    padding: 20px;
 }
 
 
@@ -82,15 +88,15 @@ a { color: white}
         <div class="grid-item-status">
             <!-- left status part -->
             {% if banana_url %}
-            <div class="green">URL reached.</div>
+            <div class="green left-border-radius">{{ url_success_nessage }}</div>
             {% else %}
-            <div class="orange">URL not reached.</div>
+            <div class="orange left-border-radius">{{ url_failure_message }}</div>
             {% endif %}
             <!-- right status part -->
             {% if banana_tp %}
-            <div class="green">Touch points reached.</div>
+            <div class="green right-border-radius">{{ tp_success_nessage }}</div>
             {% else %}
-            <div class="orange">Touch points not reached.</div>
+            <div class="orange right-border-radius">{{ tp_failure_nessage }}</div>
             {% endif %}
         </div>
 
@@ -98,13 +104,21 @@ a { color: white}
         <div class="grid-item"><a href="https://secure-nextjs-homeless-shelter-database.vercel.app/">Secure Shelter Database</a></div>
         <div class="grid-item">Next JS, React, Supabase, Cypress</div>
         <div class="grid-item">Vercel</div>
-        {% if shelter_url and shelter_tp %}
-        <div class="grid-item green">URL and touchpoints reached</div>
-        {% elif shelter_url and not shelter_tp %}
-        <div class="grid-item orange">URL but not touchpoints reached</div>
-        {% else %}
-        <div class="grid-item red">both url and touchpoints not reached</div>
-        {% endif %}
+        <div class="grid-item-status">
+            <!-- left status part -->
+            {% if shelter_url %}
+            <div class="green left-border-radius">{{ url_success_nessage }}</div>
+            {% else %}
+            <div class="orange left-border-radius">{{ url_failure_nessage }}</div>
+            {% endif %}
+            <!-- right status part -->
+            {% if shelter_tp %}
+            <div class="green right-border-radius">{{ tp_success_nessage }}</div>
+            {% else %}
+            <div class="orange right-border-radius">{{ tp_success_nessage }}</div>
+            {% endif %}
+        </div>
+
 
         <!-- DEPLOYMENT -->
         <div class="grid-item"><a href="https://jamesdiffeycoding.github.io/Tailwind-Responsive-Grid-Experiments/">Tailwind Responsive Grids</a></div>

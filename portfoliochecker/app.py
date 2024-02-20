@@ -12,10 +12,10 @@ def home():
     count_of_potentially_broken_sites = 0 
 
     # MESSAGES TO DISPLAY
-    url_success_message = 'The url was reached.'
-    url_failure_message = 'The specified url was not reached.'
-    tp_success_message = 'Specified touch points successfully reached.'
-    tp_failure_message = 'Specified touch points not reached. Check for updated html elements.'
+    url_success_message = 'Url reached.'
+    url_failure_message = 'Url not reached. Check for typos.'
+    tp_success_message = 'Touch points reached.'
+    tp_failure_message = 'Touch points not reached. Check for changes in the site if url valid.'
 
     # STATUS FOR WHETHER A SITE WAS REACHED (i.e. a valid URL was provided)
     banana_url = False
