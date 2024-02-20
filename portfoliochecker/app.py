@@ -26,7 +26,7 @@ def home():
     rubydex_url = False
     awesunsolar_url = False
     djangofirstproject_url = False
-    depdashboard_url = False
+    madeupurl_url = False
 
     # STATUS VARIABLES FOR WHETHER SPECIFIED TOUCHPOINTS WERE REACHED (e.g. a h1 tag with a specific class name)
     banana_tp = False
@@ -37,7 +37,7 @@ def home():
     rubydex_tp = False
     awesunsolar_tp = False
     djangofirstproject_tp = False
-    depdashboard_tp = False
+    madeupurl_tp = False
 
     # SITE - "shelter" APP CHECK
     try: 
@@ -259,9 +259,9 @@ def home():
         djangofirstproject_url = False
 
     
-    # SITE - "depdashboard" - deployments dashboard APP CHECK
+    # SITE - "madeupurl" - madeupurl APP CHECK
     try: 
-        page_to_scrape = requests.get("https://python-portfolio-checker.vercel.app/")
+        page_to_scrape = requests.get("https://madeupurlthatdoesntexist.com/")
         soup = BeautifulSoup(page_to_scrape.content, 'html.parser')
         first_touch_points = soup.findAll("h1", attrs={"class": ""})
         second_touch_points = soup.findAll("div")
@@ -269,22 +269,22 @@ def home():
 
         # Check if both lists are non-empty before proceeding
         if first_touch_points and second_touch_points:
-            depdashboard_tp = True
+            madeupurl_tp = True
             count_of_working_sites += 1
         else:
             # print('The request went through suggesting the URL was valid, but the touch points you set may have changed')
-            depdashboard_tp = False
+            madeupurl_tp = False
             count_of_potentially_broken_sites += 1
-        depdashboard_url = True
+        madeupurl_url = True
     except requests.exceptions.RequestException as e:
         # print("Error making request to shelter. Maybe there was a typo?") 
         # print(e)
         count_of_potentially_broken_sites += 1
-        depdashboard_url = False
+        madeupurl_url = False
 
     except Exception as e: # this checks for other erros fetching the site
         count_of_potentially_broken_sites += 1
-        depdashboard_url = False
+        madeupurl_url = False
 
     # RETURN STATEMENT 
     return render_template('deployments.html', 
