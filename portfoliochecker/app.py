@@ -66,7 +66,7 @@ def home():
     try: 
         page_to_scrape = requests.get("https://jamesdiffeycoding.github.io/JS-Banana-and-Ivy-Game/")
         soup = BeautifulSoup(page_to_scrape.content, 'html.parser')
-        first_touch_points = soup.findAll("diav", attrs={"class": "header"})
+        first_touch_points = soup.findAll("div", attrs={"class": "header"})
         second_touch_points = soup.findAll("p")
         page_to_scrape.raise_for_status()  # Raise an exception for HTTP errors
 
@@ -93,7 +93,7 @@ def home():
     try: 
         page_to_scrape = requests.get("https://jamesdiffeycoding.github.io/Tailwind-Responsive-Grid-Experiments/")
         soup = BeautifulSoup(page_to_scrape.content, 'html.parser')
-        first_touch_points = soup.findAll("h1", attrs={"class": "text-4xsl"})
+        first_touch_points = soup.findAll("h1", attrs={"class": "text-4xl"})
         second_touch_points = soup.findAll("p")
         page_to_scrape.raise_for_status()  # Raise an exception for HTTP errors
 
