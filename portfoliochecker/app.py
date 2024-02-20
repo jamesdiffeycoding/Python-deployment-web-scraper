@@ -121,7 +121,7 @@ def home():
     try: 
         page_to_scrape = requests.get("https://developer-lessons-react.vercel.app/")
         soup = BeautifulSoup(page_to_scrape.content, 'html.parser')
-        first_touch_points = soup.findAll("section")
+        first_touch_points = soup.findAll("div", attrs={"class": "setting-toggle"})
         second_touch_points = soup.findAll("div")
         page_to_scrape.raise_for_status()  # Raise an exception for HTTP errors
 
