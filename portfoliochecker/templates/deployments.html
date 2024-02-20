@@ -60,31 +60,26 @@ a { color: white}
         <div class="grid-item"><a href="https://jamesdiffeycoding.github.io/JS-Banana-and-Ivy-Game/">Banana and Ivy Game</a></div>
         <div class="grid-item">HTML, CSS, JS</div>
         <div class="grid-item">GH Pages</div>
-        <div class="grid-item">    {% if banana_url %}
-            <span>This is a banana URL</span>
+        <div class="grid-item">Vercel</div>
+        {% if shelter_url and shelter_tp %}
+        <div class="grid-item green">URL and touchpoints reached</div>
+        {% elif shelter_url and not shelter_tp %}
+        <div class="grid-item orange">URL but not touchpoints reached</div>
         {% else %}
-            <span>This is not a banana URL</span>
+        <div class="grid-item red">both url and touchpoints not reached</div>
         {% endif %}
-        {% if banana_tp %}
-            <span>This is a banana TP</span>
-        {% else %}
-            <span>This is not a banana TP</span>
-        {% endif %}</div>
 
         <!-- DEPLOYMENT -->
         <div class="grid-item"><a href="https://secure-nextjs-homeless-shelter-database.vercel.app/">Secure Shelter Database</a></div>
         <div class="grid-item">Next JS, React, Supabase, Cypress</div>
         <div class="grid-item">Vercel</div>
-        <div class="grid-item"> {% if shelter_url %}
-                                    <span>This is a sh URL</span>
-                                {% else %}
-                                    <span>This is not a sh URL</span>
-                                {% endif %}
-                                {% if shelter_tp %}
-                                    <span>This is a shs TP</span>
-                                {% else %}
-                                    <span>This is not a shs TP</span>
-                                {% endif %}</div>
+        {% if shelter_url and shelter_tp %}
+        <div class="grid-item green">URL and touchpoints reached</div>
+        {% elif shelter_url and not shelter_tp %}
+        <div class="grid-item orange">URL but not touchpoints reached</div>
+        {% else %}
+        <div class="grid-item red">both url and touchpoints not reached</div>
+        {% endif %}
 
         <!-- DEPLOYMENT -->
         <div class="grid-item"><a href="https://jamesdiffeycoding.github.io/Tailwind-Responsive-Grid-Experiments/">Tailwind Responsive Grids</a></div>
