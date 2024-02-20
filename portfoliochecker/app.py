@@ -11,15 +11,27 @@ def home():
     count_of_working_sites = 0
     count_of_potentially_broken_sites = 0 
 
-    # BOOLEAN STATUS VARIABLES
-    banana_bl = 'False'
-    shelter_bl = 'False'
-    tailwind_bl = 'False'
-    devlessons_bl = 'False'
-    ghibli_bl = 'False'
-    rubydex_bl = 'False'
-    awesunsolar_bl = 'False'
-    djangofirstproject_bl = 'False'
+    # BOOLEAN STATUS FOR WHETHER A SITE WAS REACHED (i.e. a valid URL was provided)
+    banana_url_bl = 'False'
+    shelter_url_bl = 'False'
+    tailwind_url_bl = 'False'
+    devlessons_url_bl = 'False'
+    ghibli_url_bl = 'False'
+    rubydex_url_bl = 'False'
+    awesunsolar_url_bl = 'False'
+    djangofirstproject_url_bl = 'False'
+
+    # BOOLEAN STATUS VARIABLES FOR WHETHER SPECIFIED TOUCHPOINTS WERE REACHED (e.g. a h1 tag with a specific class name)
+    banana_tp_bl = 'False'
+    shelter_tp_bl = 'False'
+    tailwind_tp_bl = 'False'
+    devlessons_tp_bl = 'False'
+    ghibli_tp_bl = 'False'
+    rubydex_tp_bl = 'False'
+    awesunsolar_tp_bl = 'False'
+    djangofirstproject_tp_bl = 'False'
+
+
 
     # SITE 1 - "shelter" APP CHECK
     try: 
@@ -27,25 +39,16 @@ def home():
         soup = BeautifulSoup(shelter_page_to_scrape.content, 'html.parser')
         shelter_first_touch_points = soup.findAll("h1", attrs={"class": "white-font"})
         shelter_second_touch_points = soup.findAll("strong")
-
         # Check if both lists are non-empty before proceeding
         if shelter_first_touch_points and shelter_second_touch_points:
-            shelter_bl = 'True'
-        else:
-            print("No shelter_first_touch_points or shelter_second_touch_points found.")
-            shelter_bl = 'False'
-
-
-        if shelter_bl == 'True':
-            print('shelter is up and running and specified touch points were found')
+            shelter_tp_bl = 'True'
             count_of_working_sites += 1
-        else: 
-            print('The request went through suggesting the URL was valid, but the touch points you set may have changed')
+        else:
+            # print('The request went through suggesting the URL was valid, but the touch points you set may have changed')
+            shelter_tp_bl = 'False'
             count_of_potentially_broken_sites += 1
-
-
     except requests.exceptions.RequestException as e:
-        print("Error making request to shelter. Maybe there was a typo?") 
+        # print("Error making request to shelter. Maybe there was a typo?") 
         # print(e)
         count_of_potentially_broken_sites += 1
 
@@ -53,14 +56,22 @@ def home():
     # RETURN STATEMENT 
     return render_template('deployments.html', 
     count_of_working_sites=count_of_working_sites, count_of_potentially_broken_sites=count_of_potentially_broken_sites,
-    banana_bl=banana_bl,
-    shelter_bl=shelter_bl,
-    tailwind_bl=tailwind_bl,
-    devlessons_bl=ghibli_bl,
-    ghibli_bl=ghibli_bl,
-    rubydex_bl=rubydex_bl,
-    awesunsolar_bl=awesunsolar_bl,
-    djangofirstproject_bl=djangofirstproject_bl)
+    banana_url_bl = banana_url_bl,
+    shelter_url_bl = shelter_url_bl,
+    tailwind_url_bl = tailwind_url_bl,
+    devlessons_url_bl = devlessons_url_bl,
+    ghibli_url_bl = ghibli_url_bl,
+    rubydex_url_bl = rubydex_url_bl,
+    awesunsolar_url_bl = awesunsolar_url_bl,
+    djangofirstproject_url_bl = djangofirstproject_url_bl,
+    banana_tp_bl=banana_tp_bl,
+    shelter_tp_bl=shelter_tp_bl,
+    tailwind_tp_bl=tailwind_tp_bl,
+    devlessons_tp_bl=devlessons_tp_bl,
+    ghibli_tp_bl=ghibli_tp_bl,
+    rubydex_tp_bl=rubydex_tp_bl,
+    awesunsolar_tp_bl=awesunsolar_tp_bl,
+    djangofirstproject_tp_bl=djangofirstproject_tp_bl)
 
 
 
@@ -69,7 +80,7 @@ def home():
 # def quotesworking():
 #     try:
 #         page_to_scrape = requests.get("http://quotes.toscrape.com")
-#         page_to_scrape.raise_for_bl()  # Raise an HTTPError if the request was unsuccessful
+#         page_to_scrape.raise_for_tp_bl()  # Raise an HTTPError if the request was unsuccessful
 #         soup = BeautifulSoup(page_to_scrape.content, 'html.parser')
 
 #         # Find all quotes
