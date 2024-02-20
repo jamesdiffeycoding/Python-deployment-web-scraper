@@ -5,6 +5,8 @@ As a developer with many projects online, I wanted a quick way to check that all
 
 I used Python to create this web scraping tool, that tests my own site URLs, checking that they are working and returning content as desired.
 
+An extra bit of value provided by this site is that visiting it helps to ensure none of my deployments spin down with inactivity.
+
 ## What it does
 This site checks my deployments at their url, parses the html response, and checks that they return certain html 'touch points' I am checking for (e.g. h1 tags, p tags, etc).
 
