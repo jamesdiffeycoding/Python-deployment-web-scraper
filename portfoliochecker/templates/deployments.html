@@ -61,7 +61,7 @@ a { color: white}
     border-bottom-right-radius: 5px;
 }
 .green {
-    background-color: #4CAF50; /* Green background color */
+    background-color: #3ab43e; /* Green background color */
     padding: 20px;
 }
 .orange {
@@ -80,9 +80,10 @@ a { color: white}
 </head>
 <body>
     <h1>James's Deployments Dashboard with Live Status</h1>
-    <div><a href="https://github.com/jamesdiffeycoding">GitHub</a></div>
+    <div><a href="https://github.com/jamesdiffeycoding">Back to James's GitHub</a></div>
+    <br> 
     <div>Count of working sites: {{ count_of_working_sites}}</div>
-    <div>Count of sites potentially needing maintenance: {{ count_of_potentially_broken_sites }} </div>
+    <div>Count of sites potentially needing maintenance: {{ count_of_potentially_broken_sites }} (including made up examples)</div>
     <br>
     <div class="grid-container">
         <!-- HEADINGS -->
@@ -108,6 +109,43 @@ a { color: white}
                 <div class="orange right-border-radius">{{ tp_failure_message }}</div>
                 {% endif %}
             </div>
+        <!-- DEPLOYMENT -->
+        <div class="grid-item-example"><a href="https://madeupurlthatdoesntexist.com/">Made up url that doesnt exist</a></div>
+        <div class="grid-item-example">ABCDEFG, JargonJargon, HelloKitty</div>
+        <div class="grid-item-example">WackyWebWeaver</div>
+        <div class="grid-item-status">
+            <!-- left status part -->
+            {% if madeupurl_url %}
+            <div class="green left-border-radius">{{ url_success_message }}</div>
+            {% else %}
+            <div class="orange left-border-radius">{{ url_failure_message }}</div>
+            {% endif %}
+            <!-- right status part -->
+            {% if madeupurl_tp %}
+            <div class="green right-border-radius">{{ tp_success_message }}</div>
+            {% else %}
+            <div class="orange right-border-radius">{{ tp_failure_message }}</div>
+            {% endif %}
+        </div>
+
+                <!-- DEPLOYMENT -->
+                <div class="grid-item-example"><a href="https://google.com/">Real url but with fictious touch points being checked (e.g. "h10" heading tags)</a></div>
+                <div class="grid-item-example">HIJKLMNOP, SecretCodeWords, HollaFeline</div>
+                <div class="grid-item-example">WorldWideSpiderWeb</div>
+                <div class="grid-item-status">
+                    <!-- left status part -->
+                    {% if google_url %}
+                    <div class="green left-border-radius">{{ url_success_message }}</div>
+                    {% else %}
+                    <div class="orange left-border-radius">{{ url_failure_message }}</div>
+                    {% endif %}
+                    <!-- right status part -->
+                    {% if google_tp %}
+                    <div class="green right-border-radius">{{ tp_success_message }}</div>
+                    {% else %}
+                    <div class="orange right-border-radius">{{ tp_failure_message }}</div>
+                    {% endif %}
+                </div>
         
         <!-- DEPLOYMENT -->
         <div class="grid-item"><a href="https://awesun-solar-visualiser.vercel.app/">Awesun Solar Visualiser</a></div>

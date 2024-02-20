@@ -258,7 +258,8 @@ def home():
         count_of_potentially_broken_sites += 1
         djangofirstproject_url = False
 
-    
+
+# DELIBERATE FAIL SITES
     # SITE - "madeupurl" - madeupurl APP CHECK
     try: 
         page_to_scrape = requests.get("https://madeupurlthatdoesntexist.com/")
@@ -285,6 +286,34 @@ def home():
     except Exception as e: # this checks for other erros fetching the site
         count_of_potentially_broken_sites += 1
         madeupurl_url = False
+    
+    # SITE - "google" - deliberate touch point fail APP CHECK
+    try: 
+        page_to_scrape = requests.get("https://google.com/")
+        soup = BeautifulSoup(page_to_scrape.content, 'html.parser')
+        first_touch_points = soup.findAll("h10", attrs={"class": ""})
+        second_touch_points = soup.findAll("div")
+        page_to_scrape.raise_for_status()  # Raise an exception for HTTP errors
+
+        # Check if both lists are non-empty before proceeding
+        if first_touch_points and second_touch_points:
+            madeupurl_tp = True
+            count_of_working_sites += 1
+        else:
+            # print('The request went through suggesting the URL was valid, but the touch points you set may have changed')
+            madeupurl_tp = False
+            count_of_potentially_broken_sites += 1
+        madeupurl_url = True
+    except requests.exceptions.RequestException as e:
+        # print("Error making request to shelter. Maybe there was a typo?") 
+        # print(e)
+        count_of_potentially_broken_sites += 1
+        madeupurl_url = False
+
+    except Exception as e: # this checks for other erros fetching the site
+        count_of_potentially_broken_sites += 1
+        madeupurl_url = False
+# END OF DELIBERATE FAIL SITES
 
     # RETURN STATEMENT 
     return render_template('deployments.html', 
