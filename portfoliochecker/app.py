@@ -41,33 +41,36 @@ def home():
     google_tp = False # deliberate fail example site
 
     # SITE - "shelter" APP CHECK
-    try: 
-        page_to_scrape = requests.get("https://secure-nextjs-homeless-shelter-database.vercel.app/")
-        soup = BeautifulSoup(page_to_scrape.content, 'html.parser')
-        first_touch_points = soup.findAll("h1", attrs={"class": "white-font"})
-        page_to_scrape.raise_for_status()  # Raise an exception for HTTP errors
-        second_touch_points = soup.findAll("strong")
-        # Check if both lists are non-empty before proceeding
-        if first_touch_points and second_touch_points:
-            shelter_tp = True
-            count_of_working_sites += 1
-        else:
-            # print('The request went through suggesting the URL was valid, but the touch points you set may have changed')
-            shelter_tp = False
-            count_of_potentially_broken_sites += 1
-        shelter_url = True
-    except requests.exceptions.RequestException as e: # this checks for request errors
-        # print("Error making request to shelter. Maybe there was a typo?") 
-        # print(e)
+try: 
+    page_to_scrape = requests.get("https://secure-nextjs-homeless-shelter-database.vercel.app/", timeout=10)
+    soup = BeautifulSoup(page_to_scrape.content, 'html.parser')
+    first_touch_points = soup.findAll("h1", attrs={"class": "white-font"})
+    page_to_scrape.raise_for_status()  # Raise an exception for HTTP errors
+    second_touch_points = soup.findAll("strong")
+    
+    # Check if both lists are non-empty before proceeding
+    if first_touch_points and second_touch_points:
+        shelter_tp = True
+        count_of_working_sites += 1
+    else:
+        # print('The request went through suggesting the URL was valid, but the touch points you set may have changed')
+        shelter_tp = False
         count_of_potentially_broken_sites += 1
-        shelter_url = False
-    except Exception as e: # this checks for other erros fetching the site
-        count_of_potentially_broken_sites += 1
-        shelter_url = False
+    shelter_url = True
+
+except requests.exceptions.RequestException as e:
+    # Handle request errors
+    count_of_potentially_broken_sites += 1
+    shelter_url = False
+
+except Exception as e:
+    # Handle other errors fetching the site
+    count_of_potentially_broken_sites += 1
+    shelter_url = False
 
     # SITE - "banana" APP CHECK
     try: 
-        page_to_scrape = requests.get("https://jamesdiffeycoding.github.io/JS-Banana-and-Ivy-Game/")
+        page_to_scrape = requests.get("https://jamesdiffeycoding.github.io/JS-Banana-and-Ivy-Game/", timeout=10)
         soup = BeautifulSoup(page_to_scrape.content, 'html.parser')
         first_touch_points = soup.findAll("div", attrs={"class": "header"})
         second_touch_points = soup.findAll("p")
@@ -94,7 +97,7 @@ def home():
 
     # SITE - "tailwind" APP CHECK
     try: 
-        page_to_scrape = requests.get("https://jamesdiffeycoding.github.io/Tailwind-Responsive-Grid-Experiments/")
+        page_to_scrape = requests.get("https://jamesdiffeycoding.github.io/Tailwind-Responsive-Grid-Experiments/", timeout=10)
         soup = BeautifulSoup(page_to_scrape.content, 'html.parser')
         first_touch_points = soup.findAll("h1", attrs={"class": "text-4xl"})
         second_touch_points = soup.findAll("p")
@@ -122,7 +125,7 @@ def home():
 
     # SITE - "devlessons" APP CHECK
     try: 
-        page_to_scrape = requests.get("https://developer-lessons-react.vercel.app/")
+        page_to_scrape = requests.get("https://developer-lessons-react.vercel.app/", timeout=10)
         soup = BeautifulSoup(page_to_scrape.content, 'html.parser')
         first_touch_points = soup.findAll("div") # note: I'm not sure why on this one I can't get a green flag for anything with a class attribute
         second_touch_points = soup.findAll("div")
@@ -150,7 +153,7 @@ def home():
 
     # SITE - "ghibli" APP CHECK
     try: 
-        page_to_scrape = requests.get("https://jamesdiffeycoding.github.io/Animated-Wallpaper-StudioGhibli/")
+        page_to_scrape = requests.get("https://jamesdiffeycoding.github.io/Animated-Wallpaper-StudioGhibli/", timeout=10)
         soup = BeautifulSoup(page_to_scrape.content, 'html.parser')
         first_touch_points = soup.findAll("video", attrs={"class": "bg-video"})
         second_touch_points = soup.findAll("p")
@@ -178,7 +181,7 @@ def home():
 
     # SITE - "rubydex" APP CHECK
     try: 
-        page_to_scrape = requests.get("https://rubyonrails-pokedex.onrender.com/pokemonsters")
+        page_to_scrape = requests.get("https://rubyonrails-pokedex.onrender.com/pokemonsters", timeout=10)
         soup = BeautifulSoup(page_to_scrape.content, 'html.parser')
         first_touch_points = soup.findAll("div", attrs={"class": "footer"})
         second_touch_points = soup.findAll("p")
@@ -206,7 +209,7 @@ def home():
 
     # SITE - "awesunsolar" APP CHECK
     try: 
-        page_to_scrape = requests.get("https://awesun-solar-visualiser.vercel.app/")
+        page_to_scrape = requests.get("https://awesun-solar-visualiser.vercel.app/", timeout=10)
         soup = BeautifulSoup(page_to_scrape.content, 'html.parser')
         first_touch_points = soup.findAll("div", attrs={"class": "backgroundImage"})
         second_touch_points = soup.findAll("p")
@@ -234,7 +237,7 @@ def home():
 
     # SITE - "djangofirstproject" APP CHECK
     try: 
-        page_to_scrape = requests.get("https://django-learning-project.vercel.app/")
+        page_to_scrape = requests.get("https://django-learning-project.vercel.app/", timeout=10)
         soup = BeautifulSoup(page_to_scrape.content, 'html.parser')
         first_touch_points = soup.findAll("nav", attrs={"class": "navbar"})
         second_touch_points = soup.findAll("p")
@@ -263,7 +266,7 @@ def home():
 # DELIBERATE FAIL SITES
     # SITE - "madeupurl" - madeupurl APP CHECK
     try: 
-        page_to_scrape = requests.get("https://madeupurlthatdoesntexist.com/")
+        page_to_scrape = requests.get("https://madeupurlthatdoesntexist.com/", timeout=10)
         soup = BeautifulSoup(page_to_scrape.content, 'html.parser')
         first_touch_points = soup.findAll("h1", attrs={"class": ""})
         second_touch_points = soup.findAll("div")
@@ -290,7 +293,7 @@ def home():
     
     # SITE - "google" - deliberate touch point fail APP CHECK
     try: 
-        page_to_scrape = requests.get("https://google.com/")
+        page_to_scrape = requests.get("https://google.com/", timeout=10)
         soup = BeautifulSoup(page_to_scrape.content, 'html.parser')
         first_touch_points = soup.findAll("h10", attrs={"class": ""})
         second_touch_points = soup.findAll("div")
