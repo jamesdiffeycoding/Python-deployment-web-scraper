@@ -41,32 +41,29 @@ def home():
     google_tp = False # deliberate fail example site
 
     # SITE - "shelter" APP CHECK
-try: 
-    page_to_scrape = requests.get("https://secure-nextjs-homeless-shelter-database.vercel.app/", timeout=10)
-    soup = BeautifulSoup(page_to_scrape.content, 'html.parser')
-    first_touch_points = soup.findAll("h1", attrs={"class": "white-font"})
-    page_to_scrape.raise_for_status()  # Raise an exception for HTTP errors
-    second_touch_points = soup.findAll("strong")
-    
-    # Check if both lists are non-empty before proceeding
-    if first_touch_points and second_touch_points:
-        shelter_tp = True
-        count_of_working_sites += 1
-    else:
-        # print('The request went through suggesting the URL was valid, but the touch points you set may have changed')
-        shelter_tp = False
+    try: 
+        page_to_scrape = requests.get("https://secure-nextjs-homeless-shelter-database.vercel.app/", timeout=10)
+        soup = BeautifulSoup(page_to_scrape.content, 'html.parser')
+        first_touch_points = soup.findAll("h1", attrs={"class": "white-font"})
+        page_to_scrape.raise_for_status()  # Raise an exception for HTTP errors
+        second_touch_points = soup.findAll("strong")
+        # Check if both lists are non-empty before proceeding
+        if first_touch_points and second_touch_points:
+            shelter_tp = True
+            count_of_working_sites += 1
+        else:
+            # print('The request went through suggesting the URL was valid, but the touch points you set may have changed')
+            shelter_tp = False
+            count_of_potentially_broken_sites += 1
+        shelter_url = True
+    except requests.exceptions.RequestException as e: # this checks for request errors
+        # print("Error making request to shelter. Maybe there was a typo?") 
+        # print(e)
         count_of_potentially_broken_sites += 1
-    shelter_url = True
-
-except requests.exceptions.RequestException as e:
-    # Handle request errors
-    count_of_potentially_broken_sites += 1
-    shelter_url = False
-
-except Exception as e:
-    # Handle other errors fetching the site
-    count_of_potentially_broken_sites += 1
-    shelter_url = False
+        shelter_url = False
+    except Exception as e: # this checks for other erros fetching the site
+        count_of_potentially_broken_sites += 1
+        shelter_url = False
 
     # SITE - "banana" APP CHECK
     try: 
