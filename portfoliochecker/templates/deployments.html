@@ -94,7 +94,7 @@ a { color: white}
     <div><a href="https://github.com/jamesdiffeycoding">Back to James's GitHub</a></div>
     <br>
     <div>Count of working sites: {{ count_of_working_sites}}</div>
-    <div>Count of sites potentially needing maintenance: {{ count_of_potentially_broken_sites }} (including made up examples)</div>
+    <div>Count of sites potentially needing maintenance: {{ count_of_potentially_broken_sites }} (including two made up failing examples)</div>
     <br>
     <div class="grid-container">
         <!-- HEADINGS -->
@@ -122,7 +122,7 @@ a { color: white}
                 <div class="orange right-border-radius">{{ tp_failure_message }}</div>
                 {% endif %}
             </div>
- 
+
 <!-- DELIBERATE FAIL 2 -->
         <!-- DEPLOYMENT -->
         <div class="grid-item-example"><a href="https://google.com/">Google.com but with fictitious touch points (e.g. "h10" heading tags)</a></div>
@@ -142,7 +142,7 @@ a { color: white}
             <div class="orange right-border-radius">{{ tp_failure_message }}</div>
             {% endif %}
         </div>
-        
+
         <!-- DEPLOYMENT -->
         <div class="grid-item blue"><a href="https://awesun-solar-visualiser.vercel.app/">Awesun Solar Visualiser</a></div>
         <div class="grid-item">Public APIs, Next JS, React</div>
