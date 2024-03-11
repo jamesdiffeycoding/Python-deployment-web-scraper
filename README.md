@@ -1,5 +1,7 @@
 # Python Live Deployments Dashboard
 
+![DeploymentsDashboardShot1](https://github.com/jamesdiffeycoding/python-live-deployments-dashboard/assets/139918141/c6d6d78f-0136-4ce7-8315-9fbcdefbef54)
+
 ## Inspiration
 As a developer with many projects online, I wanted a quick way to check that all of my public deployments were working.
 
@@ -20,6 +22,9 @@ This was my first deployed project in Python that didn't use django. Setup was t
 
 ## Built with
 Python, Flask, Beautiful Soup, HTML, CSS 
+
+## Issues to fix
+Sometimes the site has a loading issue I am currently trying to fix. My understanding is it is to do with making requests to so many different sites, that if any of the sites it is requesting from are returning their response very slowly, it can prevent my Python template from rendering.
 
 ## Try it out
 [My Live Deployments Dashboard](https://jamesdiffeycoding-pythonlivedashboard.vercel.app/)
