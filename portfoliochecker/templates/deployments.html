@@ -93,8 +93,8 @@ a { color: white}
     <h1>James's Live Deployments Dashboard (made with Python and Flask)</h1>
     <div><a href="https://github.com/jamesdiffeycoding">Back to James's GitHub</a></div>
     <br>
-    <div>Count of working sites: {{ count_of_working_sites}}</div>
-    <div>Count of sites potentially needing maintenance: {{ count_of_potentially_broken_sites }} (including two made up failing examples)</div>
+    <div>Count of sites that gave perfect responses: {{ count_of_working_sites - 1}}</div>
+    <div>Count of sites that are either 'waking up' upon your request or need maintenance: {{ count_of_potentially_broken_sites }}</div>
     <br>
     <div class="grid-container">
         <!-- HEADINGS -->
@@ -125,23 +125,23 @@ a { color: white}
 
 <!-- DELIBERATE FAIL 2 -->
         <!-- DEPLOYMENT -->
-        <div class="grid-item-example"><a href="https://google.com/">Google.com but with fictitious touch points (e.g. "h10" heading tags)</a></div>
+        <!-- <div class="grid-item-example"><a href="https://google.com/">Google.com but with fictitious touch points (e.g. "h10" heading tags)</a></div>
         <div class="grid-item-example">SecretCodeWords, HollaFeline</div>
         <div class="grid-item-example">WorldWideSpiderWeb</div>
         <div class="grid-item-status-example">
-            <!-- left status part -->
-            {% if google_url %}
-            <div class="green left-border-radius">{{ url_success_message }}</div>
-            {% else %}
-            <div class="orange left-border-radius">{{ url_failure_message }}</div>
-            {% endif %}
+             left status part -->
+            <!-- {% if google_url %} -->
+            <!-- <div class="green left-border-radius">{{ url_success_message }}</div> -->
+            <!-- {% else %} -->
+            <!-- <div class="orange left-border-radius">{{ url_failure_message }}</div> -->
+            <!-- {% endif %} -->
             <!-- right status part -->
-            {% if google_tp %}
-            <div class="green right-border-radius">{{ tp_success_message }}</div>
-            {% else %}
-            <div class="orange right-border-radius">{{ tp_failure_message }}</div>
-            {% endif %}
-        </div>
+            <!-- {% if google_tp %} -->
+            <!-- <div class="green right-border-radius">{{ tp_success_message }}</div> -->
+            <!-- {% else %} -->
+            <!-- <div class="orange right-border-radius">{{ tp_failure_message }}</div> -->
+            <!-- {% endif %} -->
+        <!-- </div> -->
 
         <!-- DEPLOYMENT -->
         <div class="grid-item blue"><a href="https://awesun-solar-visualiser.vercel.app/">Awesun Solar Visualiser</a></div>
