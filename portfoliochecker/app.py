@@ -403,6 +403,7 @@ def home():
     google_tp = False # deliberate fail example site
 # COUNTS
     count_of_potentially_broken_sites = 0
+    count_of_working_sites = 10
 
 
 
