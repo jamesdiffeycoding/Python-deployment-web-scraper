@@ -79,6 +79,19 @@ a { color: white}
 .blue {
     background-color: rgb(34, 113, 152)
 }
+.stats {
+    background-color:  #3ab43e73;
+    padding: 1rem;
+    padding-top: 0.1rem;
+    border-radius: 10px;
+}
+h1 {
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    color: yellow
+}
+.githublink {
+    color: rgb(14, 192, 165);
+}
 
 
 /* Responsive design */
@@ -90,59 +103,28 @@ a { color: white}
     </style>
 </head>
 <body>
-    <h1>James's Live Deployments Dashboard (made with Python and Flask)</h1>
-    <div><a href="https://github.com/jamesdiffeycoding">Back to James's GitHub</a></div>
+    <h1>Deployments Dashboard and Debugger</h1>
+    <div><a href="https://github.com/jamesdiffeycoding" class = "githublink">Back to James's GitHub</a></div>
+
     <br>
-    <div>Count of sites that gave perfect responses: {{ count_of_working_sites - 1}}</div>
-    <div>Count of sites that are either 'waking up' upon your request or need maintenance: {{ count_of_potentially_broken_sites }}</div>
+    <h2>My deployments</h2>
+    <section class="stats">
+        <h3>Stats</h3>
+        <ul>
+            <li>Perfect responses: <strong>{{ count_of_working_sites }}</strong></li>
+            <li>Check for errors on <strong>{{ count_of_potentially_broken_sites }} </strong>sites</li>
+        </ul>
+    </section>
     <br>
+
+    <!-- REAL EXAMPLE CONTAINER -->
     <div class="grid-container">
         <!-- HEADINGS -->
         <div class="grid-header">Deployment</div>
         <div class="grid-header">Technologies</div>
         <div class="grid-header">Host</div>
         <div class="grid-header">Status</div>
-
-<!-- DELIBERATE FAIL 1 -->
-        <!-- DEPLOYMENT -->
-            <div class="grid-item-example"><a href="https://madeupurlthatdoesntexist.com/">Failing URL that doesn't exist</a></div>
-            <div class="grid-item-example">JargonJargon, HelloKitty</div>
-            <div class="grid-item-example">WackyWebWeaver</div>
-            <div class="grid-item-status-example">
-                <!-- left status part -->
-                {% if madeupurl_url %}
-                <div class="green left-border-radius">{{ url_success_message }}</div>
-                {% else %}
-                <div class="orange left-border-radius">{{ url_failure_message }}</div>
-                {% endif %}
-                <!-- right status part -->
-                {% if madeupurl_tp %}
-                <div class="green right-border-radius">{{ tp_success_message }}</div>
-                {% else %}
-                <div class="orange right-border-radius">{{ tp_failure_message }}</div>
-                {% endif %}
-            </div>
-
-<!-- DELIBERATE FAIL 2 -->
-        <!-- DEPLOYMENT -->
-        <!-- <div class="grid-item-example"><a href="https://google.com/">Google.com but with fictitious touch points (e.g. "h10" heading tags)</a></div>
-        <div class="grid-item-example">SecretCodeWords, HollaFeline</div>
-        <div class="grid-item-example">WorldWideSpiderWeb</div>
-        <div class="grid-item-status-example">
-             left status part -->
-            <!-- {% if google_url %} -->
-            <!-- <div class="green left-border-radius">{{ url_success_message }}</div> -->
-            <!-- {% else %} -->
-            <!-- <div class="orange left-border-radius">{{ url_failure_message }}</div> -->
-            <!-- {% endif %} -->
-            <!-- right status part -->
-            <!-- {% if google_tp %} -->
-            <!-- <div class="green right-border-radius">{{ tp_success_message }}</div> -->
-            <!-- {% else %} -->
-            <!-- <div class="orange right-border-radius">{{ tp_failure_message }}</div> -->
-            <!-- {% endif %} -->
-        <!-- </div> -->
-
+        
         <!-- DEPLOYMENT -->
         <div class="grid-item blue"><a href="https://corporate-carbon-disclosures.vercel.app/">Carbon Emissions Ratings</a></div>
         <div class="grid-item">TypeScript, GraphQL, React, Node.js</div>
@@ -161,7 +143,7 @@ a { color: white}
             <div class="orange right-border-radius">{{ tp_failure_message }}</div>
             {% endif %}
         </div>
-
+        
         <!-- DEPLOYMENT -->
         <div class="grid-item blue"><a href="https://awesun-solar-visualiser.vercel.app/">Awesun Solar Visualiser</a></div>
         <div class="grid-item">Public APIs, Next JS, React</div>
@@ -180,24 +162,27 @@ a { color: white}
             <div class="orange right-border-radius">{{ tp_failure_message }}</div>
             {% endif %}
         </div>
+
+
         <!-- DEPLOYMENT -->
-        <div class="grid-item blue"><a href="https://jamesdiffeycoding.github.io/JS-Banana-and-Ivy-Game/">Banana and Ivy Game</a></div>
-        <div class="grid-item">HTML, CSS, JS</div>
-        <div class="grid-item">GH Pages</div>
+        <div class="grid-item blue"><a href="https://mathereactical.vercel.app/">MatheReactical</a></div>
+        <div class="grid-item">React, JS</div>
+        <div class="grid-item">Vercel</div>
         <div class="grid-item-status">
             <!-- left status part -->
-            {% if banana_url %}
+            {% if mathereact_url %}
             <div class="green left-border-radius">{{ url_success_message }}</div>
             {% else %}
             <div class="orange left-border-radius">{{ url_failure_message }}</div>
             {% endif %}
             <!-- right status part -->
-            {% if banana_tp %}
+            {% if mathereact_tp %}
             <div class="green right-border-radius">{{ tp_success_message }}</div>
             {% else %}
             <div class="orange right-border-radius">{{ tp_failure_message }}</div>
             {% endif %}
         </div>
+
 
         <!-- DEPLOYMENT -->
         <div class="grid-item blue"><a href="https://rubyonrails-pokedex.onrender.com/pokemonsters">Ruby on Rails Pokedex</a></div>
@@ -218,7 +203,7 @@ a { color: white}
             {% endif %}
         </div>
         
-
+        
         <!-- DEPLOYMENT -->
         <div class="grid-item blue"><a href="https://secure-nextjs-homeless-shelter-database.vercel.app/">Secure Shelter Database</a></div>
         <div class="grid-item">Next JS, React, Supabase, Cypress</div>
@@ -232,6 +217,25 @@ a { color: white}
             {% endif %}
             <!-- right status part -->
             {% if shelter_tp %}
+            <div class="green right-border-radius">{{ tp_success_message }}</div>
+            {% else %}
+            <div class="orange right-border-radius">{{ tp_failure_message }}</div>
+            {% endif %}
+        </div>
+        
+        <!-- DEPLOYMENT -->
+        <div class="grid-item blue"><a href="https://jamesdiffeycoding.github.io/JS-Banana-and-Ivy-Game/">Banana and Ivy Game</a></div>
+        <div class="grid-item">HTML, CSS, JS</div>
+        <div class="grid-item">GH Pages</div>
+        <div class="grid-item-status">
+            <!-- left status part -->
+            {% if banana_url %}
+            <div class="green left-border-radius">{{ url_success_message }}</div>
+            {% else %}
+            <div class="orange left-border-radius">{{ url_failure_message }}</div>
+            {% endif %}
+            <!-- right status part -->
+            {% if banana_tp %}
             <div class="green right-border-radius">{{ tp_success_message }}</div>
             {% else %}
             <div class="orange right-border-radius">{{ tp_failure_message }}</div>
@@ -312,18 +316,58 @@ a { color: white}
             <div class="orange right-border-radius">{{ tp_failure_message }}</div>
             {% endif %}
         </div>
-
-
-
     </div>
 
-    <!-- <ul>
-    {% for quote, author in quotes %}
-        <li>
-            <blockquote>{{ quote }}</blockquote>
-            <p>- {{ author }}</p>
-        </li>
-    {% endfor %}
-    </ul> -->
+        <!-- FAIL EXAMPLE CONTAINER -->
+        <br>
+        <br>
+        <h2>Two deliberately failing examples</h2>
+        <div class="grid-container">
+            <!-- HEADINGS -->
+            <div class="grid-header">Deployment</div>
+            <div class="grid-header">Technologies</div>
+            <div class="grid-header">Host</div>
+            <div class="grid-header">Status</div>
+        
+    <!-- DELIBERATE FAIL 1 -->
+            <!-- DEPLOYMENT -->
+                <div class="grid-item-example"><a href="https://madeupurlthatdoesntexist.com/">Failing URL that doesn't exist</a></div>
+                <div class="grid-item-example">JargonJargon, HelloKitty</div>
+                <div class="grid-item-example">WackyWebWeaver</div>
+                <div class="grid-item-status-example">
+                    <!-- left status part -->
+                    {% if madeupurl_url %}
+                    <div class="green left-border-radius">{{ url_success_message }}</div>
+                    {% else %}
+                    <div class="orange left-border-radius">{{ url_failure_message }}</div>
+                    {% endif %}
+                    <!-- right status part -->
+                    {% if madeupurl_tp %}
+                    <div class="green right-border-radius">{{ tp_success_message }}</div>
+                    {% else %}
+                    <div class="orange right-border-radius">{{ tp_failure_message }}</div>
+                    {% endif %}
+                </div>
+    
+    <!-- DELIBERATE FAIL 2 -->
+            <!-- DEPLOYMENT -->
+            <div class="grid-item-example"><a href="https://google.com/">Google.com but with fictitious touch points (e.g. "h10" heading tags)</a></div>
+            <div class="grid-item-example">SecretCodeWords, HollaFeline</div>
+            <div class="grid-item-example">WorldWideSpiderWeb</div>
+            <div class="grid-item-status-example">
+                 <!-- left status part  -->
+                {% if google_url %}
+                <div class="green left-border-radius">{{ url_success_message }}</div>
+                {% else %}
+                <div class="orange left-border-radius">{{ url_failure_message }}</div>
+                {% endif %}
+                <!-- right status part -->
+                {% if google_tp %}
+                <div class="green right-border-radius">{{ tp_success_message }}</div>
+                {% else %}
+                <div class="orange right-border-radius">{{ tp_failure_message }}</div>
+                {% endif %}
+            </div>
+        </div>
 </body>
 </html>

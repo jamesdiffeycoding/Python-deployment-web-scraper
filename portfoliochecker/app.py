@@ -20,6 +20,7 @@ def home():
     # STATUS FOR WHETHER A SITE WAS REACHED (i.e. a valid URL was provided)
     emissions_url = False
     banana_url = False
+    mathereact_url = False
     shelter_url = False
     tailwind_url = False
     devlessons_url = False
@@ -32,6 +33,7 @@ def home():
     # STATUS VARIABLES FOR WHETHER SPECIFIED TOUCHPOINTS WERE REACHED (e.g. a h1 tag with a specific class name)
     emissions_tp = False
     banana_tp = False
+    mathereact_tp = False
     shelter_tp = False
     tailwind_tp = False
     devlessons_tp = False
@@ -41,7 +43,6 @@ def home():
     djangofirstproject_tp = False
     madeupurl_tp = False # deliberate fail example site
     google_tp = False # deliberate fail example site
-
 
     # SITE - "emissions" APP CHECK
     try: 
@@ -93,6 +94,34 @@ def home():
     except Exception as e: # this checks for other erros fetching the site
         count_of_potentially_broken_sites += 1
         shelter_url = False
+
+
+    # SITE - "mathereact" APP CHECK
+    try: 
+        page_to_scrape = requests.get("https://mathereactical.vercel.app/", timeout=1)
+        soup = BeautifulSoup(page_to_scrape.content, 'html.parser')
+        first_touch_points = soup.findAll("div")
+        second_touch_points = soup.findAll("p")
+        page_to_scrape.raise_for_status()  # Raise an exception for HTTP errors
+
+        # Check if both lists are non-empty before proceeding
+        if first_touch_points and second_touch_points:
+            mathereact_tp = True
+            count_of_working_sites += 1
+        else:
+            # print('The request went through suggesting the URL was valid, but the touch points you set may have changed')
+            mathereact_tp = False
+            count_of_potentially_broken_sites += 1
+        mathereact_url = True
+    except requests.exceptions.RequestException as e:
+        # print("Error making request to shelter. Maybe there was a typo?") 
+        # print(e)
+        count_of_potentially_broken_sites += 1
+        mathereact_url = False
+
+    except Exception as e: # this checks for other erros fetching the site
+        count_of_potentially_broken_sites += 1
+        mathereact_url = False
 
     # SITE - "banana" APP CHECK
     try: 
@@ -345,6 +374,39 @@ def home():
         google_url = False
 # END OF DELIBERATE FAIL SITES
 
+# FOR DEVELOPMENT USE ONLY - SET ALL VALUES TO EXPECTED VALUES
+    # STATUS FOR WHETHER A SITE WAS REACHED (i.e. a valid URL was provided)
+    emissions_url = True
+    mathereact_url = True
+    banana_url = True
+    shelter_url = True
+    tailwind_url = True
+    devlessons_url = True
+    ghibli_url = True
+    rubydex_url = True
+    awesunsolar_url = True
+    djangofirstproject_url = True
+    madeupurl_url = False # deliberate fail example site
+    google_url = True # deliberate fail example site
+    # STATUS VARIABLES FOR WHETHER SPECIFIED TOUCHPOINTS WERE REACHED (e.g. a h1 tag with a specific class name)
+    emissions_tp = True
+    mathereact_tp = True
+    banana_tp = True
+    shelter_tp = True
+    tailwind_tp = True
+    devlessons_tp = True
+    ghibli_tp = True
+    rubydex_tp = True
+    awesunsolar_tp = True
+    djangofirstproject_tp = True
+    madeupurl_tp = False # deliberate fail example site
+    google_tp = False # deliberate fail example site
+# COUNTS
+    count_of_potentially_broken_sites = 0
+
+
+
+
     # RETURN STATEMENT 
     return render_template('deployments.html', 
     count_of_working_sites=count_of_working_sites, count_of_potentially_broken_sites=count_of_potentially_broken_sites,
@@ -360,6 +422,7 @@ def home():
     # PROJECT STATUS BOOLEAN VARIABLES
     emissions_url = emissions_url,
     banana_url = banana_url,
+    mathereact_url = mathereact_url,
     shelter_url = shelter_url,
     tailwind_url = tailwind_url,
     devlessons_url = devlessons_url,
@@ -369,6 +432,7 @@ def home():
     djangofirstproject_url = djangofirstproject_url,
     emissions_tp= emissions_tp,
     banana_tp=banana_tp,
+    mathereact_tp = mathereact_tp,
     shelter_tp=shelter_tp,
     tailwind_tp=tailwind_tp,
     devlessons_tp=devlessons_tp,
