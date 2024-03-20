@@ -144,6 +144,25 @@ a { color: white}
         <!-- </div> -->
 
         <!-- DEPLOYMENT -->
+        <div class="grid-item blue"><a href="https://corporate-carbon-disclosures.vercel.app/">Carbon Emissions Ratings</a></div>
+        <div class="grid-item">TypeScript, GraphQL, React, Node.js</div>
+        <div class="grid-item">Vercel</div>
+        <div class="grid-item-status">
+            <!-- left status part -->
+            {% if emissions_url %}
+            <div class="green left-border-radius">{{ url_success_message }}</div>
+            {% else %}
+            <div class="orange left-border-radius">{{ url_failure_message }}</div>
+            {% endif %}
+            <!-- right status part -->
+            {% if emissions_tp %}
+            <div class="green right-border-radius">{{ tp_success_message }}</div>
+            {% else %}
+            <div class="orange right-border-radius">{{ tp_failure_message }}</div>
+            {% endif %}
+        </div>
+
+        <!-- DEPLOYMENT -->
         <div class="grid-item blue"><a href="https://awesun-solar-visualiser.vercel.app/">Awesun Solar Visualiser</a></div>
         <div class="grid-item">Public APIs, Next JS, React</div>
         <div class="grid-item">Vercel</div>

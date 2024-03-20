@@ -18,6 +18,7 @@ def home():
     tp_failure_message = 'Touch points failed.'
 
     # STATUS FOR WHETHER A SITE WAS REACHED (i.e. a valid URL was provided)
+    emissions_url = False
     banana_url = False
     shelter_url = False
     tailwind_url = False
@@ -29,6 +30,7 @@ def home():
     madeupurl_url = False # deliberate fail example site
     google_url = False # deliberate fail example site
     # STATUS VARIABLES FOR WHETHER SPECIFIED TOUCHPOINTS WERE REACHED (e.g. a h1 tag with a specific class name)
+    emissions_tp = False
     banana_tp = False
     shelter_tp = False
     tailwind_tp = False
@@ -39,6 +41,33 @@ def home():
     djangofirstproject_tp = False
     madeupurl_tp = False # deliberate fail example site
     google_tp = False # deliberate fail example site
+
+
+    # SITE - "emissions" APP CHECK
+    try: 
+        page_to_scrape = requests.get("https://corporate-carbon-disclosures.vercel.app/", timeout=1)
+        soup = BeautifulSoup(page_to_scrape.content, 'html.parser')
+        first_touch_points = soup.findAll("div")
+        page_to_scrape.raise_for_status()  # Raise an exception for HTTP errors
+        second_touch_points = soup.findAll("p")
+        # Check if both lists are non-empty before proceeding
+        if first_touch_points and second_touch_points:
+            emissions_tp = True
+            count_of_working_sites += 1
+        else:
+            # print('The request went through suggesting the URL was valid, but the touch points you set may have changed')
+            emissions_tp = False
+            count_of_potentially_broken_sites += 1
+        emissions_url = True
+    except requests.exceptions.RequestException as e: # this checks for request errors
+        # print("Error making request to shelter. Maybe there was a typo?") 
+        # print(e)
+        count_of_potentially_broken_sites += 1
+        shelter_url = False
+    except Exception as e: # this checks for other erros fetching the site
+        count_of_potentially_broken_sites += 1
+        shelter_url = False
+
 
     # SITE - "shelter" APP CHECK
     try: 
@@ -329,6 +358,7 @@ def home():
     google_tp=google_tp,
     google_url=google_url,
     # PROJECT STATUS BOOLEAN VARIABLES
+    emissions_url = emissions_url,
     banana_url = banana_url,
     shelter_url = shelter_url,
     tailwind_url = tailwind_url,
@@ -337,6 +367,7 @@ def home():
     rubydex_url = rubydex_url,
     awesunsolar_url = awesunsolar_url,
     djangofirstproject_url = djangofirstproject_url,
+    emissions_tp= emissions_tp,
     banana_tp=banana_tp,
     shelter_tp=shelter_tp,
     tailwind_tp=tailwind_tp,
