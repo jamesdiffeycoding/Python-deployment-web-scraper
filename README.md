@@ -4,7 +4,7 @@
 ![DeploymentsDashboardShot1](https://github.com/jamesdiffeycoding/python-live-deployments-dashboard/assets/139918141/c6d6d78f-0136-4ce7-8315-9fbcdefbef54)
 
 ## Inspiration
-As a developer with many projects online, I wanted a quick way to check that all of my public deployments were working.
+As a developer with many projects online, I needed a quick way to check that all of my public deployments were working.
 
 I used Python to create this web scraping tool, that tests my own site URLs, checking that they are working and returning content as desired.
 
